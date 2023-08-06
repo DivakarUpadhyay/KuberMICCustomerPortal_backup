@@ -1,0 +1,213 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.IndexModel
+
+<div class="col-auto side-menu-container">
+  <ul class="sw-25 side-menu mb-0 primary" id="sideMenu">
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.All)" class="pb-0">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">@LoanFilterType.All.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.ACHActive)" asp-route-enddate="@Model.EndDate" class="pb-0">
+        <i data-acorn-icon="pos" class="icon"></i>
+        <span class="label">@LoanFilterType.ACHActive.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.PrincipalBalanceGreaterThanZero)" asp-route-enddate="@Model.EndDate" class="pb-0">
+        <i data-acorn-icon="check-square" class="icon"></i>
+        <span class="label">@LoanFilterType.PrincipalBalanceGreaterThanZero.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.DaysLate0To30)" asp-route-enddate="@Model.EndDate" class="pb-0">
+        <i data-acorn-icon="hourglass" class="icon"></i>
+        <span class="label">@LoanFilterType.DaysLate0To30.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.DaysLate31To90)" asp-route-enddate="@Model.EndDate" class="pb-0">
+        <i data-acorn-icon="hourglass" class="icon"></i>
+        <span class="label">@LoanFilterType.DaysLate31To90.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.DaysLate91To270)" asp-route-enddate="@Model.EndDate" class="pb-0">
+        <i data-acorn-icon="hourglass" class="icon"></i>
+        <span class="label">@LoanFilterType.DaysLate91To270.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.DaysLateGtrThan270)" asp-route-enddate="@Model.EndDate">
+        <i data-acorn-icon="hourglass" class="icon"></i>
+        <span class="label">@LoanFilterType.DaysLateGtrThan270.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" data-bs-target="#account">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">Mortgage Priority</span>
+      </a>
+      <ul>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.FirstMortgage)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.FirstMortgage.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.SecondMortgage)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.SecondMortgage.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.ThirdMortgage)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.ThirdMortgage.ToDescription()</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" data-bs-target="#account">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">Mortgage Type</span>
+      </a>
+      <ul>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Residential)" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Residential.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Commercial)" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Commercial.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Construction)" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Construction.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Uncategorized)" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Uncategorized.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Land)" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Land.ToDescription()</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" data-bs-target="#account">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">BMO BBC</span>
+      </a>
+      <ul>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OwnerOccupied1stMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label"> Owner Occupied 1st - All</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OwnerOccupied1stMortgagesLTVLessThan50GTA)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label"> Own Occ 1st - LTV < 50% GTA</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OwnerOccupied1stMortgagesOther)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label"> Owner Occu 1st - Others</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OwnerOccupied2ndMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label"> Owner Occupied - 2nd</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Land)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Land.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.NonOwner1stMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">Qual 1st Non-Owner Occ</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Commercial1stMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Commercial1stMortgages.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Arrears1stMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">@LoanFilterType.Arrears1stMortgages.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+            <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Arrears2ndMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+                <i data-acorn-icon="home" class="icon"></i>
+                <span class="label">@LoanFilterType.Arrears2ndMortgages.ToDescription()</span>
+            </a>
+        </li>
+         <li>
+            <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.DelinquentMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+                <i data-acorn-icon="home" class="icon"></i>
+                        <span class="label">@LoanFilterType.DelinquentMortgages.ToDescription()</span>
+            </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#" data-bs-target="#account">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">Mortgage Region</span>
+      </a>
+      <ul>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.GTAMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">GTA</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OttawaMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">Ottawa</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.GoldenHorseshoeMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">Golden Horseshoe</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.OtherMajorUrbanAreasMortgages)" asp-route-enddate="@Model.EndDate" class="pb-0">
+            <i data-acorn-icon="home" class="icon"></i>
+            <span class="label">Other Urban Areas</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+

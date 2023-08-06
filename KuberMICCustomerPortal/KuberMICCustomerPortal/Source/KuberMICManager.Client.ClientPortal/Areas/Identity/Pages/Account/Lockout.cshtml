@@ -1,0 +1,27 @@
+﻿@page
+@model LockoutModel
+@{
+    Layout = "_FullLayout";
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    ViewData["Title"] = "Locked out";
+    ViewBag.Description = "Locked out";
+}
+
+@section RightSide {
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="mb-5">
+    <h2 class="cta-1 text-primary">@ViewData["Title"]</h2>
+</div>
+<div class="mb-5">
+    <p class="h6 text-danger">This account has been locked out, please contact your admin.</p>
+</div>
+}

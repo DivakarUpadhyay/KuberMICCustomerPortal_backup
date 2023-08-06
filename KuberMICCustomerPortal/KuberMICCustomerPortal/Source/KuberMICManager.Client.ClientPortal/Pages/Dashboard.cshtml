@@ -1,0 +1,123 @@
+﻿@page
+@using KuberMICManager.Core.Domain.Entities.Application
+@using KuberMICManager.Core.Domain.ViewModels
+@model KuberMICManager.Client.WebUI.Pages.DashboardModel
+
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>() {
+        "/css/vendor/bootstrap-datepicker3.standalone.min.css",
+        "/css/vendor/glide.core.min.css",
+        "/css/main.css"
+    };
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>() {
+        "/js/vendor/datepicker/bootstrap-datepicker.min.js",
+        "/js/vendor/glide.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>() {
+        "/js/forms/controls.datepicker.js",
+        "/js/cs/glide.custom.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/Index","Home"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewBag.Title = "Dashboard"; 
+    ViewBag.Description = "Kuber MIC Manager Dashboard";
+}
+<div class="container">
+    <form method="post">
+        <!-- Title and Top Buttons Start -->
+        <div class="page-title-container">
+            <div class="row">
+                <!-- Title Start -->
+                <div class="col-12 col-md-7">
+                    <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+                    <partial name="_Layout.Breadcrumb"/>
+                </div>
+                <!-- Title End -->
+            </div>
+        </div>
+        <hr />
+        <!-- Title and Top Buttons End -->
+
+        <!-- Content Start -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-xl-8">
+                    <h2 class="small-title">User Stats</h2>
+                    <div class="row gx-2">
+                        <div class="col-3">
+                            @*<a asp-page="/Tools/Validator/Index" asp-route-filtertype="@((string)ValidationAccountType.Loan)" class="text-body">
+                           *@   <div class="card mb-5 sh-20 hover-border-primary">
+                                    <div class="h-100 p-4 text-center align-items-center d-flex flex-column justify-content-between">
+                                        <div class="d-flex flex-column justify-content-center align-items-center sh-5 sw-5 rounded-xl mb-2">
+                                            <i data-acorn-icon="shield-warning" class="text-white"></i>
+                                        </div>
+                                        <p class="mb-0 lh-1">Total Activated Users</p>                                    
+                                    <p class="cta-3 mb-0 text-primary">@Model.DashboardLoanViewData.userDatas.Where(m=>m.Status=="Active").ToList().Count()</></p>
+                                    </div>
+                                </div>
+                            @*</a>*@
+                        </div>
+                        <div class="col-3">
+                            @*<a asp-page="/Tools/Renewals/Index" class="text-body">*@
+                                <div class="card mb-5 sh-20 hover-border-primary">
+                                    <div class="h-100 p-4 text-center align-items-center d-flex flex-column justify-content-between">
+                                        <div class="d-flex flex-column justify-content-center align-items-center sh-5 sw-5 rounded-xl bg-gradient-light mb-2">
+                                            <i data-acorn-icon="alarm" class="text-white"></i>
+                                        </div>
+                                        <p class="mb-0 lh-1">Total Deactivated Users</p>
+                                    <p class="cta-3 mb-0 text-primary">@Model.DashboardLoanViewData.userDatas.Where(m=>m.Status=="Inactive").ToList().Count()</p>
+                                    </div>
+                                </div>
+                            @*</a>*@
+                        </div>
+                        <div class="col-3">
+                          @*  <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.Residential)" class="text-body">
+                         *@       <div class="card mb-5 sh-20 hover-border-primary">
+                                    <div class="h-100 p-4 text-center align-items-center d-flex flex-column justify-content-between">
+                                        <div class="d-flex flex-column justify-content-center align-items-center sh-5 sw-5 rounded-xl bg-gradient-light mb-2">
+                                            <i data-acorn-icon="home" class="text-white"></i>
+                                        </div>
+                                        <p class="mb-0 lh-1">No of Unique Investor User</p>
+                                    <p class="cta-3 mb-0 text-primary">@Model.DashboardLoanViewData.userDatas.Where(m=>m.Type=="Partner").ToList().Count()</p>
+                                    </div>
+                                </div>
+                            @*</a>*@
+                        </div>
+                        <div class="col-3">
+                            <a href="#" class="text-body">
+                                <div class="card mb-5 sh-20 hover-border-primary">
+                                    <div class="h-100 p-4 text-center align-items-center d-flex flex-column justify-content-between">
+                                        <div class="d-flex flex-column justify-content-center align-items-center sh-5 sw-5 rounded-xl bg-gradient-light mb-2">
+                                            <i data-acorn-icon="money-bag" class="text-white"></i>
+                                        </div>
+                                        <p class="mb-0 lh-1">No of Unique Loan User</p>
+                                        <p class="cta-3 mb-0 text-primary">@Model.DashboardLoanViewData.userDatas.Where(m=>m.Type=="Loan").ToList().Count()</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+             <!-- Stats Start -->
+             <div class="row">
+                <partial name="~/Pages/_Dashboard.ActiveInactiveUserDetailsView.cshtml" model="@Model.DashboardLoanViewData" view-data="ViewData" />
+             </div>           
+            <!-- Stats End -->
+        </div>
+
+        <!-- Content End -->
+    </form>  
+</div>

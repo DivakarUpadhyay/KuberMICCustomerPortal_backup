@@ -1,0 +1,519 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Loan Details Start -->
+<section class="scroll-section loan_borrowers">
+    <h2 class="small-title">Loan Details</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>LOAN Number</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Account</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>LOAN STATUS</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Categories</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>LOAN OFFICER</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.LoanOfficer" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>LOAN PURPOSE</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.LoanPurpose" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>LOAN CATEGORY
+                                    @if (IsQualifiedLoan(Model.LoanViewModel.Loan.Documentation))
+                                    {
+                                        <span class="badge bg-outline-success me-1 mb-1 lh-1-25">Qualified</span>
+                                    }
+                                    else if (IsIneligibleLoan(Model.LoanViewModel.Loan.Documentation))
+                                    {
+                                        <span class="badge bg-outline-warning me-1 mb-1 lh-1-25">Ineligible</span>
+                                    }
+                                </span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.Documentation" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>NOTICES & FORMS</span>
+                            </label>
+                            <label class="form-check w-100 mb-0">
+                                <input type="checkbox" class="form-check-input" checked="@(Model.LoanViewModel.Loan.SendLateNotices == true)" disabled/>
+                                <span class="mb-1 lh-1-25">Send Late Notices</span>
+                            </label>
+                            <label class="form-check w-100 mb-0">
+                                <input type="checkbox" class="form-check-input" checked="@(Model.LoanViewModel.Loan.SendPaymentReceipt == true)" disabled/>
+                                <span class="mb-1 lh-1-25">Send Payment Receipt</span>
+                            </label>
+                            <label class="form-check w-100 mb-0">
+                                <input type="checkbox" class="form-check-input" checked="@(Model.LoanViewModel.Loan.SendPaymentStatement == true)" disabled/>
+                                <span class="mb-1 lh-1-25">Send Payment Statement</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Loan Details End -->
+
+<!-- Primary Borrower Start -->
+<section class="scroll-section loan_borrowers">
+    <h2 class="small-title">Primary Borrower</h2>
+    <div class="row">
+        <div class="col-12 col-xl-7">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.FullName</label>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="mb-5 top-label">
+                                <span>TITLE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Salutation</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>FIRST NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.FirstName</label>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="mb-5 top-label">
+                                <span>INITIAL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Mi</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>LAST NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.LastName</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>STREET</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Street</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>CITY</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.City</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>STATE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.State</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>POSTAL CODE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.ZipCode</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>DELIVERY OPTIONS</span>
+                            </label>
+                            <label class="mt-2">
+                                @if (Model.LoanViewModel.Loan.DeliveryOptions == 1 ||
+                                     Model.LoanViewModel.Loan.DeliveryOptions == 3 ||
+                                     Model.LoanViewModel.Loan.DeliveryOptions == 5)
+                                {
+                                    <span class="badge bg-outline-primary me-1">PRINT</span>
+                                }  
+                                @if(Model.LoanViewModel.Loan.DeliveryOptions == 2 ||
+                                    Model.LoanViewModel.Loan.DeliveryOptions == 3 ||
+                                    Model.LoanViewModel.Loan.DeliveryOptions == 6) 
+                                {
+                                    <span class="badge bg-outline-secondary me-1 mb-1 lh-1-25">EMAIL</span>
+                                } 
+                                @if(Model.LoanViewModel.Loan.DeliveryOptions == 4 ||
+                                    Model.LoanViewModel.Loan.DeliveryOptions == 5 ||
+                                    Model.LoanViewModel.Loan.DeliveryOptions == 6) 
+                                {
+                                    <span class="badge bg-outline-tertiary me-1 mb-1 lh-1-25">TEXT</span>
+                                } 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-5">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>EMAIL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.EmailAddress</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>SIN</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.Tin</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>CELL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.PhoneCell</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>HOME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.PhoneHome</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>WORK</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.PhoneWork</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>FAX</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.LoanViewModel.Loan.PhoneFax</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Primary Borrower End -->
+
+<!-- Co-Borrowers Start -->
+<section class="scroll-section loan_borrowers">
+    @{
+        if (Model.LoanViewModel.CoBorrowers.Any())
+        {
+            <h2 class="small-title">Co-Borrower(s)</h2>
+        }
+        @foreach (var coborrower in Model.LoanViewModel.CoBorrowers)
+        {
+            <div class="row">
+                <div class="col-12 col-xl-7">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="mb-5 top-label">
+                                        <span>NAME</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.FullName</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <label class="mb-5 top-label">
+                                        <span>SALUTATION</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.Salutation</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>FIRST NAME</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.FirstName</label>
+                                </div>
+                                <div class="col-md-1">
+                                    <label class="mb-5 top-label">
+                                        <span>INITIAL</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.Mi</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>LAST NAME</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.LastName</label>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>STREET</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.Street</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="mb-5 top-label">
+                                        <span>CITY</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.City</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="mb-5 top-label">
+                                        <span>STATE</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.State</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="mb-5 top-label">
+                                        <span>POSTAL CODE</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.ZipCode</label>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>RELATION</span>
+                                    </label>
+                                    <label class="form-control" readonly>@Enum.GetName(typeof(CoBorrowerRelation), coborrower.Relation)</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>TYPE</span>
+                                    </label>
+                                    <label class="form-control" readonly>@Enum.GetName(typeof(CoBorrowerType), coborrower.RecType)</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>DELIVERY OPTIONS</span>
+                                    </label>
+                                    <label class="mt-2">
+                                        @if (coborrower.DeliveryOptions == 1 || 
+                                                coborrower.DeliveryOptions == 3 || 
+                                                coborrower.DeliveryOptions == 5)
+                                        {
+                                            <span class="badge bg-outline-primary me-1">PRINT</span>
+                                        }  
+                                        @if(coborrower.DeliveryOptions == 2 || 
+                                            coborrower.DeliveryOptions == 3 || 
+                                            coborrower.DeliveryOptions == 6) 
+                                        {
+                                            <span class="badge bg-outline-secondary me-1 mb-1 lh-1-25">EMAIL</span>
+                                        } 
+                                        @if(coborrower.DeliveryOptions == 4 || 
+                                            coborrower.DeliveryOptions == 5 || 
+                                            coborrower.DeliveryOptions == 6) 
+                                        {
+                                            <span class="badge bg-outline-tertiary me-1 mb-1 lh-1-25">TEXT</span>
+                                        } 
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="mb-5 top-label">
+                                        <span>NOTIFICATION</span>
+                                    </label>
+                                    <label class="form-check w-100 mb-0">
+                                        <input type="checkbox" class="form-check-input mt-2" checked="@(coborrower.SendNotices == true)" disabled/>
+                                        <span class="mb-1 lh-2-5">Send</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-5">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>EMAIL</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.EmailAddress</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>SIN</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.Tin</label>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>CELL</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.PhoneCell</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>HOME</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.PhoneHome</label>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>WORK</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.PhoneWork</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="mb-5 top-label">
+                                        <span>FAX</span>
+                                    </label>
+                                    <label class="form-control" readonly>@coborrower.PhoneFax</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</section>
+<!-- Co-Borrowers End -->
+
+<!-- ACH Start -->
+<section class="scroll-section loan_borrowers">
+    <h2 class="small-title">ACH</h2>
+    <div class="row">
+        <div class="col-12 col-xl-7">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>INDIVIDUAL ID</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.AchIndividualId" disabled/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>INDIVIDUAL NAME</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.AchIndividualName" disabled/>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>STATUS</span>
+                            </label>
+                            <input class="form-control" placeholder="@Enum.GetName(typeof(AchServiceStatus), Model.LoanViewModel.Loan.AchServiceStatus)" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT TYPE</span>
+                            </label>
+                            <input class="form-control" placeholder="@Enum.GetName(typeof(AchServiceStatus), Model.LoanViewModel.Loan.AchAccountType)" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ROUTING NUMBER</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.AchRoutingNumber" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT NUMBER</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.AchAccountNumber" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>BANK NAME</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.AchBankName" disabled/>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="mb-5 top-label">
+                                <span>BANK ADDRESS</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.AchBankAddress" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-5">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>USE DEBIT AMOUNT</span>
+                            </label>
+                            <label class="form-check w-100 mb-0">
+                                <input type="checkbox" class="form-check-input mt-2" checked="@(Model.LoanViewModel.Loan.AchUseDebitAmount == true)" disabled/>
+                                <span class="mb-1 lh-1-25">
+                                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.AchDebitAmount)" disabled/>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>DEBIT FREQUENCY</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Enum.GetName(typeof(ACHDebitFrequency), Model.LoanViewModel.Loan.AchFrequency)" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>NEXT DEBIT DATE</span>
+                            </label>
+                            <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.AchNextDebitDate)" disabled/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>STOP DATE</span>
+                            </label>
+                            <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.AchStopDate)" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>DEBIT DUE DAY</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.AchDebitDueDay" disabled/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>APPLY DEBIT AS</span>
+                            </label>
+                            <input class="form-control" placeholder="@Enum.GetName(typeof(AchServiceStatus), Model.LoanViewModel.Loan.AchApplyAs)" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ACH End -->

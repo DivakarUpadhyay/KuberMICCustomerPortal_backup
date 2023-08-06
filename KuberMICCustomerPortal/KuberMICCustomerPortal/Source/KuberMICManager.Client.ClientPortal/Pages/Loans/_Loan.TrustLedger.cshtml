@@ -1,0 +1,55 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Trust Ledger Start -->
+<section class="scroll-section loan_trust_ledger">
+    <h2 class="small-title">Trust Ledger</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase">DATE</th>
+                                                <th class="text-muted text-medium text-uppercase">REFERENCE</th>
+                                                <th class="text-muted text-medium text-uppercase">FROM WHOM RECEIVED/PAID</th>
+                                                <th class="text-muted text-medium text-uppercase">MEMO</th>
+                                                <th class="text-muted text-medium text-uppercase">PAYMENT</th>
+                                                <th class="text-muted text-medium text-uppercase">CLR</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">DEPOSIT</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">BALANCE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @*@{
+                                                int index = 0;
+                                                foreach (var charge in Model.LoanViewModel.Charges?.OrderBy(c => c.ChargeDate))
+                                                {
+                                                    <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                                        <td>@String.Format("{0:MM/dd/yyyy}",charge.ChargeDate)</td>
+                                                        <td>@charge.Reference</td>
+                                                        <td>@String.Format("{0:n2}", charge.IntRate)%</td>
+                                                        <td>@charge.Description</td>
+                                                        <td>$@String.Format("{0:n2}", charge.OrigAmt)</td>
+                                                        <td>@charge.Notes</td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", charge.OwedToBal)</td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", charge.OwedToBal)</td>
+                                                    </tr>
+                                                }
+                                            }*@
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Trust Ledger End -->

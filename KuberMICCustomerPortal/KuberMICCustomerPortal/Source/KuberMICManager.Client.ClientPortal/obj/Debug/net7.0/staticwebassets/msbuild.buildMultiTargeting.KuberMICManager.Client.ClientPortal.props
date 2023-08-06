@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\KuberMICManager.Client.ClientPortal.props" />
+</Project>

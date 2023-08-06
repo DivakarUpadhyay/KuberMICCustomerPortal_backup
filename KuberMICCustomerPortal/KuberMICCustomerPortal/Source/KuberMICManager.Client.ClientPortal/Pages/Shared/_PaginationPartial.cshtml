@@ -1,0 +1,61 @@
+﻿@using KuberMICManager.Core.Domain.ViewModels
+@model PaginationViewModel
+
+@{
+    string prevDisabled = !Model.Paginated.HasPreviousPage ? "disabled" : "";
+    string nextDisabled = !Model.Paginated.HasNextPage ? "disabled" : "";
+}
+
+@if (0 < Model.Paginated.PageIndex && Model.Paginated.PageIndex < Model.Paginated.TotalPages)
+{
+    <div>
+        <div>
+            <nav aria-label="page navigation">
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item @prevDisabled"><a class="page-link" asp-route-pageIndex="@(Model.Paginated.PageIndex - 1)">Previous</a></li>
+                    <li class="page-item @nextDisabled"><a class="page-link" asp-route-pageIndex="@(Model.Paginated.PageIndex + 1)">Next</a></li>
+
+                    @if (Model.Paginated.PageIndex != 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-route-pageIndex="@(Math.Max(1, Model.Paginated.PageIndex - Model.MaxPagesToDisplay))">...</a>
+                        </li>
+                    }
+
+                    @for (int i = Model.Paginated.PageIndex; i <= Model.DisplayUpToPageIndex; i++)
+                    {
+                        string active = i == Model.Paginated.PageIndex ? "active" : "";
+
+                        <li class="page-item @(active)">
+                            <a class="page-link" asp-route-pageIndex="@(i)">@i</a>
+                        </li>
+                    }
+
+                    @if (Math.Min(Model.DisplayUpToPageIndex + 1, Model.Paginated.TotalPages) < Model.Paginated.TotalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" asp-route-pageIndex="@(Math.Min(Model.DisplayUpToPageIndex + 1, Model.Paginated.TotalPages))">...</a>
+                        </li>
+                    }
+
+                </ul>
+                <div class="pagination justify-content-center">
+                    <span>@((Model.Paginated.PageIndex - 1) * Model.Paginated.PageSize + 1) - @(Model.Paginated.TotalCount < Model.Paginated.PageIndex * Model.Paginated.PageSize ? Model.Paginated.TotalCount : Model.Paginated.PageIndex * Model.Paginated.PageSize) of @Model.Paginated.TotalCount record(s)</span>
+                </div>
+            </nav>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <div>
+            <nav aria-label="page navigation">
+                <ul class="pagination justify-content-center">
+                    <li>Page @(Model.Paginated.PageIndex) - @Model.Paginated.TotalCount record(s) found</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+}

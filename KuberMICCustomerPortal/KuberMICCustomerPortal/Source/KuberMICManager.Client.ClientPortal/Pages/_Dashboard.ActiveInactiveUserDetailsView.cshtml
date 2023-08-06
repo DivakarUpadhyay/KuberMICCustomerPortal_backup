@@ -1,0 +1,104 @@
+@using KuberMICManager.Core.Domain.ViewModels
+@model DashboardLoanViewModel
+
+<div class="class">
+    <div class="card mb-3">
+        <div class="card-header border-0 pb-0">
+            <ul class="nav nav-pills responsive-tabs" role="tablist" id="responsiveTabs">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#inactiveusers" role="tab" type="button" aria-selected="true">
+                        Inactive Users
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activeusers" role="tab" type="button" aria-selected="false">Active Users</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="inactiveusers" role="tabpanel">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-2 col-md-2 d-flex align-items-center">
+                            <label class="text-muted text-small text-uppercase">PUBLISH</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                            <label class="text-muted text-small text-uppercase">EMAIL</label>
+                        </div>                        
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                            <label class="text-muted text-small text-uppercase text-end">PASSWORD</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                            <label class="text-muted text-small text-uppercase text-end">ACCOUNT</label>
+                        </div>                        
+                    </div>
+                    <div class="row mb-2">
+                        @if (Model.userDatas != null)
+                        {
+                            var InActiveUsers = Model.userDatas.Where(m => m.Status == "Inactive");
+                            int i = 0;
+                            foreach (var usr in InActiveUsers)
+                            {
+                                i++;
+                                var emailId = usr.EmailAddress;
+                                <div class="col-3 col-md-3">
+                                    <span><input type="checkbox" name="chk_@emailId" id="chk"></input></span>
+                                </div>
+                                 <div class="col-3 col-md-3">
+                                    <span>@usr.EmailAddress</span>
+                                </div>
+                                 <div class="col-3 col-md-3">
+                                    <span>@usr.Password</span>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <span>@usr.Account</span>
+                                </div>     
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="activeusers" role="tabpanel">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-2 col-md-2 d-flex align-items-center">
+                            <label class="text-muted text-small text-uppercase">PUBLISH</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                            <label class="text-muted text-small text-uppercase">EMAIL</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                            <label class="text-muted text-small text-uppercase text-end">PASSWORD</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                            <label class="text-muted text-small text-uppercase text-end">ACCOUNT</label>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        @if (Model.userDatas != null)
+                        {
+                            int i = 0;
+                            var ActiveUsers = Model.userDatas.Where(m => m.Status == "Active");
+                            foreach (var usr in ActiveUsers)
+                            {
+                                i++;
+                                var emailId = usr.EmailAddress;
+                                <div class="col-3 col-md-3">
+                                    <span><input type="checkbox" name="chk_@emailId" id="chk"></input></span>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <span>@usr.EmailAddress</span>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <span>@usr.Password</span>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <span>@usr.Account</span>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,96 @@
+﻿@page
+@model NewUserModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){
+      "/js/vendor/jquery.validate/jquery.validate.min.js",
+      "/js/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"},
+        {"/identity/users/index","User Management"},
+        {"/identity/users/newuser","Add User"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewData["Title"] = "Add a New User";
+    ViewBag.Description = "Add a new user";
+}
+
+<h4>@ViewData["Title"]</h4>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.UserName"></label>
+                <input asp-for="InputCreateUser.UserName" class="form-control" />
+                <span asp-validation-for="InputCreateUser.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.FirstName"></label>
+                <input asp-for="InputCreateUser.FirstName" class="form-control" />
+                <span asp-validation-for="InputCreateUser.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.LastName"></label>
+                <input asp-for="InputCreateUser.LastName" class="form-control" />
+                <span asp-validation-for="InputCreateUser.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.ClaimList"></label>
+                <hr />
+                @for (var i = 0; i < Model.InputCreateUser.ClaimList.Count(); i++)
+                {
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <input type="checkbox" asp-for="@Model.InputCreateUser.ClaimList[i].isSelected" />
+                            <label asp-for="@Model.InputCreateUser.ClaimList[i].id">@Model.InputCreateUser.ClaimList[i].claimName</label>
+                            <input type="hidden" asp-for="@Model.InputCreateUser.ClaimList[i].id" />
+                            <input type="hidden" asp-for="@Model.InputCreateUser.ClaimList[i].claimName" />
+                        </div>
+                    </div>
+
+                }
+                <hr />
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.CompanyName"></label>
+                <input asp-for="InputCreateUser.CompanyName" class="form-control" />
+                <span asp-validation-for="InputCreateUser.CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.Email"></label>
+                <input asp-for="InputCreateUser.Email" class="form-control" />
+                <span asp-validation-for="InputCreateUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.PhoneNumber"></label>
+                <input asp-for="InputCreateUser.PhoneNumber" class="form-control" />
+                <span asp-validation-for="InputCreateUser.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.Password"></label>
+                <input asp-for="InputCreateUser.Password" class="form-control" />
+                <span asp-validation-for="InputCreateUser.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InputCreateUser.ConfirmPassword"></label>
+                <input asp-for="InputCreateUser.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="InputCreateUser.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-ac btn-primary">Create User</button>
+        </form>
+    </div>
+</div>

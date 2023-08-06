@@ -1,0 +1,312 @@
+﻿@page
+@using KuberMICManager.Core.Domain.ViewModels
+@using KuberMICManager.Core.Domain.Framework
+@model IndexModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>() {
+        "/css/vendor/quill.bubble.css",
+        "/css/vendor/quill.snow.css",
+        "/css/vendor/bootstrap-datepicker3.standalone.min.css",
+        "/css/main.css"
+    };
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>() {
+        "/js/vendor/quill.min.js",
+        "/js/vendor/quill.active.js",
+        "/js/vendor/datepicker/bootstrap-datepicker.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>() {
+        "/js/forms/controls.editor.js",
+        "/js/forms/controls.datepicker.js",
+        "/js/pagescripts/notes.edit.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewBag.Title = "Loans: " + @Model.FilterType.ToDescription().Replace("xxx", Model.AtRiskBeaconScoreThreshold).Replace("xx", Model.AtRiskLTVThreshold); 
+    ViewBag.Description = "Loan Manager";
+}
+
+<div class="container">
+    <!-- Title and Top Buttons Start -->
+    <div class="page-title-container">
+        <div class="row">
+            <!-- Title Start -->
+            <div class="col-12 col-md-4">
+                <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title <span class="text-muted text-extra-small">(@Model.Loans.Count() Found)</span></h1>
+                <partial name="_Layout.Breadcrumb"/>
+            </div>
+            <!-- Title End -->
+
+            <!-- Search Start -->
+            <div class="col-12 col-md-8 text-end">
+                <form method="get">
+                    <div class="row">
+                        <div class="input-group">
+                            <div class="mt-2">
+                                <label class="form-label form-check-inline">Search In: </label>
+                                @for (int i = 0; i < Model.CheckBoxLoanSearchGroup.Count; i++)
+                                {
+                                    <div class="form-check form-check-inline">
+                                        @Html.CheckBoxFor(m => m.CheckBoxLoanSearchGroup[i].IsSelected, new { @class = "form-check-input", @name = $"{@Model.CheckBoxLoanSearchGroup[i].LoanSearchGroup}.IsSelected"})
+                                        @Html.DisplayFor(m => m.CheckBoxLoanSearchGroup[i].LoanSearchGroup, new { @class = "form-check-label"})
+                                        @Html.HiddenFor(m => m.CheckBoxLoanSearchGroup[i].LoanSearchGroup)
+                                    </div>
+                                }
+                            </div>
+                            <!-- Date Input -->
+                            <span class="input-group-text">
+                                <i data-acorn-icon="calendar" class="text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control" id="datePickerInputGroup" autocomplete="off" placeholder="" asp-for="EndDate" value="@String.Format("{0:MM/dd/yyyy}", Model.EndDate)" />
+                            <!-- Search Text Input -->
+                            <input type="text" name="searchFor" placeholder="Search" class="form-control ql-color-white" style="display: inline;" autocomplete="off" value="@Model.SearchFor"/>
+                            <input type="hidden" asp-for="FilterType" value="@((int)(Model.FilterType))" />
+                            <button type="submit" asp-page-handler="search" class="btn btn-lg btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Search End -->
+        </div>
+    </div>
+    <hr />
+    <!-- Title and Top Buttons End -->
+
+    <div class="row text-medium">
+        <!-- Left Navigation Start -->
+        <div class="col-12 col-xl-2 w-10 ">
+            <!-- Menu Start -->
+            <partial name="_Layout.SideNavLoans"/>
+            <!-- Menu End -->
+        </div>
+        <!-- Left Navigation End -->
+
+        <!-- Content start -->
+        <div class="col-12 col-xl-10 w-90">
+            <div class="row">
+                <div class="col-12 col-xl-12">
+                    <!-- Loans Start -->
+                    <div class="mb-5" data-title="Loans" data-intro="Loans" data-step="1">
+                        <div class="card mb-2 h-auto">
+                            <div class="card-body">
+                                <div class="dataTables_wrapper">
+                                    <div class="row" style="overflow-y: hidden;">
+                                        <div class="col-sm-12">
+                                            <div class="table-container">
+                                                <table class="stripe dataTable text-medium">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th class="text-center" style="min-width:40px">Hold<br />ACH</th>
+                                                            <th style="width:60px">Loan #</th>
+                                                            <th>Name</th>
+                                                            <th class="text-end" style="min-width:90px">Principal Balance</th>
+                                                            <th class="text-center" style="min-width:50px">Priority</th>
+                                                            <th class="text-end">Qualified</th>
+                                                            <th class="text-end">Title Ins</th>
+                                                            <th class="text-end">Fire Ins</th>
+                                                            <th class="text-end" style="min-width:60px">Calc LTV</th>
+                                                            <th class="text-center" style="min-width:80px">Closing Date</th>
+                                                            <th class="text-center" style="min-width:80px">Interest Paid To</th>
+                                                            <th class="text-center" style="min-width:80px">Payment Date</th>
+                                                            <th class="text-center" style="min-width:80px">Maturity Date</th>
+                                                            <th class="text-center" style="min-width:60px">Frequency</th>
+                                                            <th class="text-end">Payment</th>
+                                                            <th class="text-end" style="min-width:50px">Note Rate</th>
+                                                            <th class="text-end" style="min-width:60px">Sold Rate</th>
+                                                            <th class="text-center" style="min-width:50px">Terms Left</th>
+                                                            <th class="text-center" style="min-width:50px">Days since Appraisal</th>
+                                                            <th style="min-width:130px">Address</th>
+                                                            <th style="min-width:160px"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{
+                                                            int index = 0;
+                                                            foreach (var item in Model.Loans)
+                                                            {
+                                                                <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even") @(item.ReleatedLoanList != null ? "bg-tertiary" : "")">
+                                                                    <td class="text-center">
+                                                                        @if(item.PlaceOnHold == true)
+                                                                        {
+                                                                            <span class="badge bg-outline-danger me-1">HOLD</span>
+                                                                        }
+                                                                        @if(item.AchServiceStatus == 1)
+                                                                        {
+                                                                            <span class="badge bg-outline-primary me-1">ACH</span>
+                                                                        }
+                                                                        @if(item.ReleatedLoanList != null)
+                                                                        {
+                                                                            <a asp-page="/Loans/Index" asp-route-filtertype="@((int)LoanFilterType.SameSINMortgages)" asp-route-releatedloanlist="@item.ReleatedLoanList">
+                                                                                <span class="badge bg-danger me-1">MULTIPLE</span>
+                                                                            </a>
+                                                                        }
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.Account
+                                                                    </td>
+                                                                    <td>
+                                                                        @item.FirstName @item.LastName
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        $@String.Format("{0:n2}", item.PrinBal)
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                            @item.Priority
+                                                                    </td>
+                                                                    <td class="text-end @(Model.IsCorrectQualifiedAmount(item.QualifiedAmount, item.CalculatedQualifiedAmount) ? "text-success" : "text-danger")" style="width:90px">
+                                                                        @{
+                                                                            if (Model.IsCorrectQualifiedAmount(item.QualifiedAmount, item.CalculatedQualifiedAmount))
+                                                                            {
+                                                                                @item.QualifiedAmount
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="$@String.Format("{0:n2}", item.CalculatedQualifiedAmount)">@item.QualifiedAmount</span>
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        @item.TitleInsuranceAmount
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        @item.FireInsuranceAmount
+                                                                    </td>
+                                                                    <td class="text-end text-end @(Model.IsCorrectLTV(item.StoredLTV, item.CalculatedLTV) ? "text-success" : "text-danger")" style="width:70px">
+                                                                        @{
+                                                                            if (Model.IsCorrectLTV(item.StoredLTV, item.CalculatedLTV))
+                                                                            {
+                                                                                @((item.CalculatedLTV > 0) ? String.Format("{0:n3}", @item.CalculatedLTV)+"%" : "NA")
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="@(String.Format("{0:n3}", @item.StoredLTV)+"%")">@((item.CalculatedLTV > 0) ? String.Format("{0:n3}", @item.CalculatedLTV)+"%" : "N/A")</span>
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @String.Format("{0:MM/dd/yyyy}",item.ClosingDate)
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @String.Format("{0:MM/dd/yyyy}",item.PaidToDate)
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @String.Format("{0:MM/dd/yyyy}",item.NextDueDate)
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @String.Format("{0:MM/dd/yyyy}",item.MaturityDate)
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @item.PmtFreq
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        $@String.Format("{0:n2}", item.PmtPi)
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        @String.Format("{0:n2}", item.NoteRate)%
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        @String.Format("{0:n2}", item.SoldRate)%
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @((item.TermsLeft > 0) ? @item.TermsLeft : "")
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        @{
+                                                                            var properties = item.LoanProperties.Where(p => p.AppraiserFmv != null && p.AppraiserFmv > 0 && p.AppraisalDate != null);
+                                                                            int days = properties.Any() ? (int)properties.Average(p => (DateTime.Now - p.AppraisalDate).Value.TotalDays) : 0;
+                                                                        }
+                                                                        @days
+                                                                    </td>
+                                                                    <td>
+                                                                        @{
+                                                                            TdsProperty primaryProperty = @item.LoanProperties.FirstOrDefault(p => (bool)p.Primary);
+                                                                            <span>@primaryProperty.Street, @primaryProperty.City @primaryProperty.State @primaryProperty.ZipCode</span>
+                                                                            if(item.LoanProperties.Count() > 1)
+                                                                            {
+                                                                                int i = 1;
+                                                                                string content = "";
+                                                                                foreach(TdsProperty property in item.LoanProperties.OrderByDescending(p => p.Primary))
+                                                                                {
+                                                                                    content += $"<b>P{i++}:</b> {property.Street}, {property.City} {property.State} {property.ZipCode} <br/>";
+                                                                                }
+                                                                                <button
+                                                                                    type="button"
+                                                                                    class="btn text-primary mb-1"
+                                                                                    data-bs-html="true"
+                                                                                    data-bs-container="body"
+                                                                                    data-bs-toggle="popover"
+                                                                                    data-bs-placement="top"
+                                                                                    data-bs-content="@Html.Raw(@content)"
+                                                                                >
+                                                                                    <i data-acorn-icon="more-horizontal" data-acorn-size="15"></i> More
+                                                                                </button>
+                                                                            }
+                                                                        }
+                                                                    </td>
+                                                                    <td>
+                                                                        <button data-account="@item.Account" data-recid="@item.RecId" data-loannotes="@(item.Notes == null ? "" : RtfPipe.Rtf.ToHtml(item.Notes?.Notes))" data-bs-toggle="modal" data-bs-target="#EditNotesModel" class="btn btn-sm btn-icon btn-icon-start btn-outline-primary ms-1 open-EditNotesDialog">
+                                                                            <i data-acorn-icon="note" data-acorn-size="15"></i>
+                                                                        </button>
+                                                                        <a asp-page="./ViewLoan" asp-route-id="@item.RecId" class="btn btn-sm btn-icon btn-icon-start btn-outline-primary ms-1">
+                                                                            <i data-acorn-icon="eye" data-acorn-size="15"></i>
+                                                                            <span class="d-none d-xxl-inline-block">View</span>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Loans End -->
+                </div>
+            </div>
+        </div>
+        <!-- Content End -->
+    </div>
+</div>
+
+<div class="modal modal-right fade" id="EditNotesModel" tabindex="-1" role="dialog" aria-labelledby="editNotesModelTitle" aria-hidden="true">
+    <div class="modal-dialog  modal-xl" role="document">
+        <div class="modal-content">
+            <form method="post" id="LoanNotesForm">
+                <div class="modal-header">
+                    <h5 id="editNotesModelTitle" class="modal-title">Edit Notes: <span id="accountID"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="message" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+                </div>
+                <div class="modal-body p-0">
+                    <div class="card-body editor-container">
+                        <div class="html-editor sh-19" id="quillEditor"></div>
+                        <input type="hidden" name="recID" id="recID" value="" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="editSubmitButton" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

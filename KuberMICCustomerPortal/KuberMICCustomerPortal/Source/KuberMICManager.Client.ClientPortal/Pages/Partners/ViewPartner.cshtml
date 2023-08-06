@@ -1,0 +1,92 @@
+﻿@page
+@model ViewPartnerModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>()
+    {
+        "/css/vendor/datatables.min.css"
+    };
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>()
+    {
+        "/js/vendor/datatables.min.js",
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>()
+    {
+        "/js/cs/datatable.extend.js",
+        "/js/plugins/datatable.base.js",
+        "/js/plugins/datatable.partner.history.js",
+        "/js/plugins/datatable.attachments.js",
+        "/js/site.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"},
+        {"/partners/Index","Partners"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewData["Title"] = "Partner: " + @Model.PartnerViewModel.Partner.Account + " - " + @Model.PartnerViewModel.Partner.FullName;
+    ViewBag.Description = "Partner: " + @Model.PartnerViewModel.Partner.Account + " - " + @Model.PartnerViewModel.Partner.FullName;
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Title and Top Buttons Start -->
+        <div class="page-title-container">
+            <div class="row">
+                <!-- Title Start -->
+                <div class="col-12 col-md-7">
+                    <h2 class="mb-2 pb-0 display-6" id="title">@ViewBag.Title</h2>
+                    <partial name="_Layout.Breadcrumb"/>
+                </div>
+                <!-- Title End -->
+                <div class="col-12 col-md-5 mt-4 text-end">
+                    <a href="@GetReturnLink(Model.ReturnToPage)">
+                        <i data-acorn-icon="arrow-double-left" class="icon ql-align-right text-small"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- Title and Top Buttons End -->
+    </div>
+
+    <div class="row">
+        <!-- Left Navigation Start -->
+        <div class="col-12 col-xl-1">
+            <!-- Menu Start -->
+           <partial name="_Layout.SideNavPartnerDetails"/>
+            <!-- Menu End -->
+       </div>
+       <!-- Left Navigation End -->
+
+       <!-- Content End -->
+       <div class="col-12 col-xl-11">
+            <!-- Page Content Start -->
+            <form class="tooltip-end-top" method="post">
+                <partial name="_Partner.Partner" />
+                <partial name="_Partner.Portfolio" />
+                <partial name="_Partner.Certificates" />
+                <partial name="_Partner.History" />
+                <partial name="_Partner.Attachments" />
+                <partial name="_Partner.CustomFields" />
+                <partial name="_Partner.Notes" />
+            </form>
+            <!-- Page Content End -->
+        </div>
+        <!-- Content End -->
+    </div>
+
+    <div class="row text-end">
+        <a href="@GetReturnLink(Model.ReturnToPage)">
+            <i data-acorn-icon="arrow-double-left" class="icon ql-align-right text-small"></i>Back to List
+        </a>
+    </div>
+</div>

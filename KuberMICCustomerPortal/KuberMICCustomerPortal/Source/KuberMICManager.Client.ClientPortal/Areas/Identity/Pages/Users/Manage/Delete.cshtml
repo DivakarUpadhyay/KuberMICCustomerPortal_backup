@@ -1,0 +1,115 @@
+﻿@page
+@inject UserManager<ApplicationUser> UserManager
+@model DeleteModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){
+      "/js/vendor/jquery.validate/jquery.validate.min.js",
+      "/js/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"},
+        {"/identity/users","Users"},
+        {"/identity/users/manage/delete","Delete User"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewData["Title"] = "Delete User";
+    ViewBag.Description = "Delete a user";
+}
+
+@*Make sure a user cannot delete himself, vzadmin, web user or test web users*@
+@if (Model.DeleteUser.Username == UserManager.GetUserName(User) ||
+     Model.DeleteUser.Username == "vzadmin" ||
+     Model.DeleteUser.Username == Model.acPostReqUserName ||
+     Model.DeleteUser.Username == Model.acPostReqTestUserName)
+{
+    <div>
+        <span class="text-danger">Cannot delete user @(Model.DeleteUser.Username).</span>
+    </div>
+}
+else
+{
+    <div>
+        <h4>@ViewData["Title"]</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.Username)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.Username)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.FirstName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.LastName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.ClaimList)
+            </dt>
+            <dd>
+                @for (var i = 0; i < Model.DeleteUser.ClaimList.Count(); i++)
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="@Model.DeleteUser.ClaimList[i].id">@Model.DeleteUser.ClaimList[i].claimName</label>
+                            <input type="hidden" asp-for="@Model.DeleteUser.ClaimList[i].id" />
+                            <input type="hidden" asp-for="@Model.DeleteUser.ClaimList[i].claimName" />
+                        </div>
+                    </div>
+
+                }
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.CompanyName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.CompanyName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DeleteUser.PhoneNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DeleteUser.PhoneNumber)
+            </dd>
+        </dl>
+    </div><br />
+    <h4><span style="color: red;">WARNING: You are about to delete this user. Are you sure?</span></h4><br />
+    <div>
+        <form method="post">
+            <dl class="dl-horizontal">
+                <dt>
+                    <a asp-page="../index">Back to List</a>
+                </dt>
+                <dd>
+                    <input name="userId" value="@Model.DeleteUser.UserId" class="form-control" type="hidden" />
+                    <button class="btn btn-ac btn-danger" asp-page-handler="delete">Delete User</button>
+                </dd>
+            </dl>
+        </form>
+    </div>
+}

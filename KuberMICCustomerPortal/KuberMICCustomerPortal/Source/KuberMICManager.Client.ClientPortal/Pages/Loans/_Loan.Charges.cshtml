@@ -1,0 +1,84 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Charges Start -->
+<section class="scroll-section loan_charges">
+    <h2 class="small-title">Charges</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase">DATE</th>
+                                                <th class="text-muted text-medium text-uppercase">DESCRIPTION</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">INTEREST RATE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">INTEREST FROM</th>
+                                                <th class="text-muted text-medium text-uppercase text-center" style="width:120px">DEFERRED</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">OWED TO ACCOUNT</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">ORIGINAL BALANCE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">UNPAID BALANCE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">ACCRUED INTEREST</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">TOTAL DUE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int index = 0;
+                                                foreach (var charge in Model.LoanViewModel.Charges?.OrderBy(c => c.ChargeDate))
+                                                {
+                                                    <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                                        <td>@String.Format("{0:MM/dd/yyyy}",charge.ChargeDate)</td>
+                                                        <td>@charge.Description</td>
+                                                        <td class="text-end">@String.Format("{0:n2}", charge.IntRate)%</td>
+                                                        <td class="text-end">@String.Format("{0:MM/dd/yyyy}",charge.IntFrom)</td>
+                                                        <td class="text-center">
+                                                            @if(charge.Deferred == true)
+                                                            {
+                                                                <label class="form-check w-100 mt-0 text-center">
+                                                                    <input type="checkbox" class="form-check-input mt-2" checked="@(charge.Deferred == true)" disabled/>
+                                                                </label>
+                                                            }
+                                                        </td>
+                                                        <td class="text-end">@*$@String.Format("{0:n2}", charge.OwedToRecId)*@</td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", charge.OrigAmt)</td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", charge.OwedToBal)</td>
+                                                        <td class="text-end">
+                                                            @{
+                                                                Decimal interest = 0;
+                                                                if(charge.IntFrom != null)
+                                                                {
+                                                                    interest = (Decimal)((TimeSpan)(charge.IntFrom - DateTime.Today)).TotalDays * (Decimal)(charge.IntRate / 365);
+                                                                }
+                                                                <label class="">$@String.Format("{0:n2}", interest)</label>
+                                                            }
+                                                        </td>
+                                                        <td class="text-end">
+                                                            @{
+                                                                var total = charge.OwedToBal;
+                                                                if(charge.IntFrom != null)
+                                                                {
+                                                                    total += (Decimal)((TimeSpan)(charge.IntFrom - DateTime.Today)).TotalDays * (charge.IntRate / 365);
+                                                                }
+                                                                <label class="">$@String.Format("{0:n2}", total)</label>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Charges End -->

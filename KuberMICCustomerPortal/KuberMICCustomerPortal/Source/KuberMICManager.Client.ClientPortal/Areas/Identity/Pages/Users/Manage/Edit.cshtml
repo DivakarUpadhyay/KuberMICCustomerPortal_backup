@@ -1,0 +1,121 @@
+﻿@page
+@model EditModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){
+      "/js/vendor/jquery.validate/jquery.validate.min.js",
+      "/js/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"},
+        {"/identity/users","Users"},
+        {"/identity/users/manage/edit","Edit User"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewData["Title"] = "Edit User";
+    ViewBag.Description = "User Manager - Edit User";
+}
+
+<div class="container">
+    <!-- Title and Top Buttons Start -->
+    <div class="page-title-container">
+        <div class="row">
+            <!-- Title Start -->
+            <div class="col-12 col-md-8">
+                <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+                <partial name="_Layout.Breadcrumb"/>
+            </div>
+            <!-- Title End -->
+
+            <div class="col-12 col-md-4 mt-4 text-end">
+                <a asp-page="../index">
+                    <i data-acorn-icon="arrow-double-left" class="icon ql-align-right text-small"></i>Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <!-- Title and Top Buttons End -->
+
+    @await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+
+    <div class="row">
+        <div class="col-md-12">
+            <form id="profile-form" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="InputEditUser.UserId" />
+                <div class="form-group">
+                    <label asp-for="InputEditUser.Username"></label>
+                    <input asp-for="InputEditUser.Username" class="form-control" disabled />
+                    <input type="hidden" asp-for="InputEditUser.Username" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.FirstName"></label>
+                    <input asp-for="InputEditUser.FirstName" class="form-control" />
+                    <span asp-validation-for="InputEditUser.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.LastName"></label>
+                    <input asp-for="InputEditUser.LastName" class="form-control" />
+                    <span asp-validation-for="InputEditUser.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.ClaimList"></label>
+                    <hr />
+                    @for (var i = 0; i < Model.InputEditUser.ClaimList.Count(); i++)
+                    {
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <input type="checkbox" asp-for="@Model.InputEditUser.ClaimList[i].isSelected" />
+                                <label asp-for="@Model.InputEditUser.ClaimList[i].id">@Model.InputEditUser.ClaimList[i].claimName</label>
+                                <input type="hidden" asp-for="@Model.InputEditUser.ClaimList[i].id" />
+                                <input type="hidden" asp-for="@Model.InputEditUser.ClaimList[i].claimName" />
+                            </div>
+                        </div>
+
+                    }
+                    <hr />
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.CompanyName"></label>
+                    <input asp-for="InputEditUser.CompanyName" class="form-control" />
+                    <span asp-validation-for="InputEditUser.CompanyName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.Email"></label>
+                    <input asp-for="InputEditUser.Email" class="form-control" />
+                    <span asp-validation-for="InputEditUser.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InputEditUser.PhoneNumber"></label>
+                    <input asp-for="InputEditUser.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="InputEditUser.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-ac btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row text-end">
+        <a asp-page="../index">
+            <i data-acorn-icon="arrow-double-left" class="icon ql-align-right text-small"></i>Back to List
+        </a>
+    </div>
+</div>

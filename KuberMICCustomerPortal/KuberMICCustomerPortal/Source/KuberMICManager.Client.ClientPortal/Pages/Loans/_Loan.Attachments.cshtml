@@ -1,0 +1,110 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Attachments Start -->
+<section class="scroll-section loan_attachments">
+    <h2 class="small-title">Attachments</h2>
+    <!-- Content Start -->
+    <div class="data-table-boxed">
+        <!-- Controls Start -->
+        <div class="row mb-2">
+            <!-- Search Start -->
+            <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+                <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
+                    <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed_Attachments" />
+                    <span class="search-magnifier-icon">
+                        <i data-acorn-icon="search"></i>
+                    </span>
+                    <span class="search-delete-icon d-none">
+                        <i data-acorn-icon="close"></i>
+                    </span>
+                </div>
+            </div>
+            <!-- Search End -->
+            <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+                <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+                    <!-- Export Start -->
+                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow datatable-export"
+                            data-bs-delay="0"
+                            data-datatable="#datatableBoxed_Attachments"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Export"
+                            type="button">
+                        <i data-acorn-icon="download"></i>
+                    </button>
+                    <!-- Export End -->
+                    <!-- Length Start -->
+                    <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed_Attachments" data-childSelector="span">
+                        <input id="DataTableTotalCount" name="DataTableTotalCount" type="hidden" value="@Model.LoanViewModel.Attachments.Count()" />
+                        <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                            <span class="btn btn-foreground-alternate dropdown-toggle"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="top"
+                                  data-bs-delay="0"
+                                  title="Item Count">
+                                25 Items
+                            </span>
+                        </button>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                            @{
+                                if (@Model.LoanViewModel.Attachments.Count() > 10)
+                                {
+                                    <a class="dropdown-item" href="#">10 Items</a>
+                                }
+                                if (@Model.LoanViewModel.Attachments.Count() > 50)
+                                {
+                                    <a class="dropdown-item" href="#">25 Items</a>
+                                }
+                                if (@Model.LoanViewModel.Attachments.Count() > 50)
+                                {
+                                    <a class="dropdown-item" href="#">50 Items</a>
+                                }
+                                if (@Model.LoanViewModel.Attachments.Count() > 100)
+                                {
+                                    <a class="dropdown-item" href="#">100 Items</a>
+                                }
+                            }
+                            <a class="dropdown-item active" href="#">All Items</a>
+                        </div>
+                    </div>
+                    <!-- Length End -->
+                </div>
+            </div>
+        </div>
+        <!-- Controls End -->
+        <!-- Table Start -->
+        <div>
+            <table id="datatableBoxed_Attachments" class="stripe data-table nowrap hover">
+                <thead>
+                    <tr role="row">
+                        <th class="text-muted text-medium text-uppercase">DESCRIPTION</th>
+                        <th class="text-muted text-medium text-uppercase">ADDED</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index = 0;
+                        foreach (var attachment in Model.LoanViewModel.Attachments?.OrderByDescending(l => l.SysCreatedDate))
+                        {
+                            <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                <td>
+                                    <button type="submit"
+                                    class="btn btn-link p-0"
+                                    asp-page-handler="download"
+                                    asp-route-filename="@attachment.FileName"
+                                    asp-route-filedescription="@attachment.Description">
+                                        <i class="fa fa-download"></i>@attachment.Description
+                                    </button>
+                                </td>
+                                <td>@String.Format("{0:MM/dd/yyyy h:mm tt}",attachment.SysCreatedDate)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Table End -->
+    </div>
+    <!-- Content End -->
+</section>
+<!-- Attachments End -->

@@ -1,0 +1,21 @@
+@model KuberMICManager.Client.WebUI.Pages.Partners.ViewPartnerModel
+@using KuberMICManager.Core.Domain.Entities.Application
+
+<!-- Notes Start -->
+<section class="scroll-section partner_notes">
+    <h2 class="small-title">Notes</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            @Html.Raw(RtfPipe.Rtf.ToHtml(Model.PartnerViewModel.Notes?.Notes))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Notes End -->

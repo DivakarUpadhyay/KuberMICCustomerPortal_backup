@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuberMICManager.Core.Domain", "KuberMICManager.Core.Domain\KuberMICManager.Core.Domain.csproj", "{D933EA16-7EF6-4DFB-A828-F83FF325A68D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuberMICManager.Core.Application", "KuberMICManager.Core.Application\KuberMICManager.Core.Application.csproj", "{C83EA9B6-EE6D-4AD4-981B-90E34617DF26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuberMICManager.Infrastructure.DataAccess", "KuberMICManager.Infrastructure.DataAccess\KuberMICManager.Infrastructure.DataAccess.csproj", "{C466C5FD-DF9F-4DE9-BD83-C43723C0790C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuberMICManager.Client.ClientPortal", "KuberMICManager.Client.ClientPortal\KuberMICManager.Client.ClientPortal.csproj", "{A2858AC8-4377-4F59-9FB1-913FA644C3FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D933EA16-7EF6-4DFB-A828-F83FF325A68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D933EA16-7EF6-4DFB-A828-F83FF325A68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D933EA16-7EF6-4DFB-A828-F83FF325A68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D933EA16-7EF6-4DFB-A828-F83FF325A68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83EA9B6-EE6D-4AD4-981B-90E34617DF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83EA9B6-EE6D-4AD4-981B-90E34617DF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83EA9B6-EE6D-4AD4-981B-90E34617DF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83EA9B6-EE6D-4AD4-981B-90E34617DF26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C466C5FD-DF9F-4DE9-BD83-C43723C0790C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C466C5FD-DF9F-4DE9-BD83-C43723C0790C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C466C5FD-DF9F-4DE9-BD83-C43723C0790C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C466C5FD-DF9F-4DE9-BD83-C43723C0790C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2858AC8-4377-4F59-9FB1-913FA644C3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2858AC8-4377-4F59-9FB1-913FA644C3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2858AC8-4377-4F59-9FB1-913FA644C3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2858AC8-4377-4F59-9FB1-913FA644C3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BF25E30-7B5C-4C94-9A79-C6658C246D79}
+	EndGlobalSection
+EndGlobal

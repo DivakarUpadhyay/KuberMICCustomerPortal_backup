@@ -1,0 +1,73 @@
+/* This file is reserved for overriding and extending the template styles. */
+.top-label .form-control {
+    min-height: 35px;
+    padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+}
+
+html[data-placement='horizontal'] .nav-container .user-container .user .profile {
+    color: white;
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.lh-2-5 {
+    line-height: 2.5 !important;
+}
+
+.frontlogo {
+    height: 50px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef47 !important;
+    color: var(--body);
+    -webkit-text-fill-color: var(--body) !important;
+}
+
+.top-label label:not(.form-check-label), .top-label > span:last-of-type {
+    font-size: 0.9em !important;
+    color: var(--bs-gray);
+}
+
+.input-daterange input {
+    border-radius: 0px !important;
+}
+
+.dashboard-form-check-input {
+    width: 40px !important;
+    height: 20px !important;
+}
+
+.popover .popover-body {
+    width: 400px !important;
+    border: 1px solid var(--primary) !important;
+    background-color: var(--foreground);
+}
+
+.form-switch {
+    padding-left:3em !important;
+}
+
+.form-control-label {
+    background-color: var(--separator-light) !important;
+}
+
+/*Disable counter spinner*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+tfoot {
+    background: var(--light-darker);
+    font-weight: bold;
+}
+
+.ql-container {
+    min-height: 400px;
+}

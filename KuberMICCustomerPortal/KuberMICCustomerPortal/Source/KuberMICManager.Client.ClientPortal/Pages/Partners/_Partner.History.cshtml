@@ -1,0 +1,171 @@
+@model ViewPartnerModel
+
+<!-- History Start -->
+<section class="scroll-section partner_history">
+    <h2 class="small-title">History</h2>
+
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <!-- Content Start -->
+            <div class="data-table-boxed">
+                <!-- Controls Start -->
+                <div class="row mb-2">
+                    <!-- Search Start -->
+                    <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+                        <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
+                            <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed_history" />
+                            <span class="search-magnifier-icon">
+                                <i data-acorn-icon="search"></i>
+                            </span>
+                            <span class="search-delete-icon d-none">
+                                <i data-acorn-icon="close"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Search End -->
+
+                    <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+                        <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+                            <!-- Export Start -->
+                            <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow datatable-export"
+                                    data-bs-delay="0"
+                                    data-datatable="#datatableBoxed_history"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Export"
+                                    type="button">
+                                <i data-acorn-icon="download"></i>
+                            </button>
+                            <!-- Export End -->
+
+                            <!-- Length Start -->
+                            <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed_history" data-childSelector="span">
+                                <input id="DataTableTotalCount" name="DataTableTotalCount" type="hidden" value="@Model.PartnerViewModel.Transactions.Count()" />
+                                <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                                    <span class="btn btn-foreground-alternate dropdown-toggle"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-placement="top"
+                                          data-bs-delay="0"
+                                          title="Item Count">
+                                        25 Items
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu shadow dropdown-menu-end">
+                                    @{
+                                        if (@Model.PartnerViewModel.Transactions.Count() > 10)
+                                        {
+                                            <a class="dropdown-item" href="#">10 Items</a>
+                                        }
+                                            <a class="dropdown-item active" href="#">25 Items</a>
+                                        if (@Model.PartnerViewModel.Transactions.Count() > 50)
+                                        {
+                                            <a class="dropdown-item" href="#">50 Items</a>
+                                        }
+                                        if (@Model.PartnerViewModel.Transactions.Count() > 100)
+                                        {
+                                            <a class="dropdown-item" href="#">100 Items</a>
+                                        }
+                                    }
+                                    <a class="dropdown-item" href="#">All Items</a>
+                                </div>
+                            </div>
+                            <!-- Length End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls End -->
+
+                <!-- Table Start -->
+                <div>
+                    <table id="datatableBoxed_history" class="stripe data-table nowrap hover">
+                        <thead>
+                            <tr role="row">
+                                <th class="text-muted text-medium text-uppercase" style="min-width: 65px">DATE</th>
+                                <th class="text-muted text-medium text-uppercase">POOL ACCOUNT</th>
+                                <th class="text-muted text-medium text-uppercase">REFERENCE</th>
+                                <th class="text-muted text-medium text-uppercase">DESCRIPTION</th>
+                                <th class="text-muted text-medium text-uppercase text-center">CODE</th>
+                                <th class="text-muted text-medium text-uppercase text-center">ACH</th>
+                                <th class="text-muted text-medium text-uppercase text-end pe-0">SHARES</th>
+                                <th class="text-muted text-medium text-uppercase text-end pe-0" style="min-width: 90px">AMOUNT</th>
+                                <th class="text-muted text-medium text-uppercase text-end pe-0" style="min-width: 90px">PENALTY</th>
+                                <th class="text-muted text-medium text-uppercase text-end pe-0" style="min-width: 120px">WITHHOLDING</th>
+                                <th class="text-muted text-medium text-uppercase text-end pe-0" style="min-width: 130px">SHARE BALANCE</th>
+                                <th class="text-muted text-medium text-uppercase text-end" style="min-width: 100px">CERTIFICATE</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Record @Model.PartnerViewModel.Transactions.Count() of @Model.PartnerViewModel.Transactions.Count()</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-end">@String.Format("{0:n3}", @Model.PartnerViewModel.GetTotalShares())</td>
+                                <td class="text-end">@String.Format("{0:$#,#0.00;-$#,#0.00}", Model.PartnerViewModel.Transactions.Sum(t => t.Amount))</td>
+                                <td class="text-end">@String.Format("{0:$#,#0.00;-$#,#0.00}", Model.PartnerViewModel.Transactions.Sum(t => t.Penalty))</td>
+                                <td class="text-end">@String.Format("{0:$#,#0.00;-$#,#0.00}", Model.PartnerViewModel.Transactions.Sum(t => t.Holdback))</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @{
+                                int index = 0;
+                                decimal shareBalance = 0;
+                                foreach (var history in Model.PartnerViewModel.Transactions?.OrderBy(t => t.RecDate).ThenBy(t => t.Sequence))
+                                {
+                                    shareBalance += (decimal)history.Shares;
+                                    <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")" style="line-height: 20px;">
+                                        <td>@String.Format("{0:MM/dd/yyyy}",history.RecDate)</td>
+                                        <td>@Model.PartnerViewModel.Pool?.Account</td>
+                                        <td>@history.Reference</td>
+                                        <td>@history.Memo</td>
+                                        <td class="text-center">
+                                            @if (history.Code == (int)PartnerTransactionCode.Pur)
+                                            {
+                                                @PartnerTransactionCode.Pur
+                                            }
+                                            else if (history.Code == (int)PartnerTransactionCode.Dis)
+                                            {
+                                                @PartnerTransactionCode.Dis
+                                            }else if (history.Code == (int)PartnerTransactionCode.Sal)
+                                            {
+                                                @PartnerTransactionCode.Sal
+                                            }
+                                            else if (history.Code == (int)PartnerTransactionCode.Xfr)
+                                            {
+                                                @PartnerTransactionCode.Xfr
+                                            }
+                                        </td>
+                                        <td class="text-center">
+                                            @if (history.AchTransmissionDateTime != null)
+                                            {
+                                                <span class="badge bg-outline-primary me-1">ACH</span>
+                                            }
+                                        </td>
+                                        <td class="text-end @(history.Shares < 0 ? "text-danger" : "")">
+                                            @if (history.Shares != 0)
+                                            {
+                                                @String.Format("{0:n3}" , history.Shares)
+                                            }
+                                        </td>
+                                        <td class="text-end @(history.Amount < 0 ? "text-danger" : "")">@String.Format("{0:$#,#0.00;-$#,#0.00}", history.Amount)</td>
+                                        <td class="text-end @(history.Penalty < 0 ? "text-danger" : "")">@String.Format("{0:$#,#0.00;-$#,#0.00}", history.Penalty)</td>
+                                        <td class="text-end @(history.Holdback < 0 ? "text-danger" : "")">@String.Format("{0:$#,#0.00;-$#,#0.00}", history.Holdback)</td>
+                                        <td class="text-end @(shareBalance < 0 ? "text-danger" : "")">@String.Format("{0:n3}", shareBalance)</td>
+                                        <td class="text-end">@Model.PartnerViewModel.GetCertificateNumber(history.CertificateRecId)</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Table End -->
+            </div>
+            <!-- Content End -->
+        </div>
+    </div>
+</section>
+<!-- History End -->

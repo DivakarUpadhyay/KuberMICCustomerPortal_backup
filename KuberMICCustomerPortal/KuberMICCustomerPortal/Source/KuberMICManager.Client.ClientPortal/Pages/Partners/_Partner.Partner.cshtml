@@ -1,0 +1,262 @@
+@model KuberMICManager.Client.WebUI.Pages.Partners.ViewPartnerModel
+
+<section class="scroll-section partner_details">
+    <!-- Investment Details Start -->
+    <h2 class="small-title">Partner Details</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT NUMBER</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.Account</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT TYPE</span>
+                            </label>
+                            @if(Model.PartnerViewModel.Partner.AccountType == (int)(PartnerAccountType.Growth)) {
+                                <label class="form-control" readonly>@PartnerAccountType.Growth.ToDescription()</label>
+                            } 
+                            else if(Model.PartnerViewModel.Partner.AccountType == (int)(PartnerAccountType.Income)) {
+                                <label class="form-control" readonly>@PartnerAccountType.Income.ToDescription()</label>
+                            }
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>TRUSTEE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Trustee?.TrusteeName</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>CATEGORIES</span>
+                            </label>
+                            @foreach(var category in @Model.PartnerViewModel.Partner.Categories.Split(";")) {
+                                <label class="form-check w-100 mb-0">
+                                    <input type="checkbox" class="form-check-input" checked="checked" disabled/>
+                                    <span class="mb-1 lh-1-25">@category</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Investment Details End -->
+
+    <!-- Partner Start -->
+    <h2 class="small-title">Primary Borrower</h2>
+    <div class="row">
+        <div class="col-12 col-xl-7">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>SALUTATION</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.Salutation</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>FIRST NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.FirstName</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>INITIAL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.Mi</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>LAST NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.LastName</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>Full NAME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.FullName</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>STREET</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.Street</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>CITY</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.City</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>STATE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.State</label>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>POSTAL CODE</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.ZipCode</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>DELIVERY OPTIONS</span>
+                            </label>
+                            <label class="mt-2">
+                                @if (Model.PartnerViewModel.Partner.DeliveryOptions == 1 || 
+                                        Model.PartnerViewModel.Partner.DeliveryOptions == 3 || 
+                                        Model.PartnerViewModel.Partner.DeliveryOptions == 5)
+                                {
+                                    <span class="badge bg-outline-primary me-1">PRINT</span>
+                                }  
+                                @if(Model.PartnerViewModel.Partner.DeliveryOptions == 2 || 
+                                    Model.PartnerViewModel.Partner.DeliveryOptions == 3 || 
+                                    Model.PartnerViewModel.Partner.DeliveryOptions == 6) 
+                                {
+                                    <span class="badge bg-outline-secondary me-1 mb-1 lh-1-25">EMAIL</span>
+                                } 
+                                @if(Model.PartnerViewModel.Partner.DeliveryOptions == 4 || 
+                                    Model.PartnerViewModel.Partner.DeliveryOptions == 5 || 
+                                    Model.PartnerViewModel.Partner.DeliveryOptions == 6) 
+                                {
+                                    <span class="badge bg-outline-tertiary me-1 mb-1 lh-1-25">TEXT</span>
+                                } 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-5">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>EMAIL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.EmailAddress</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>SIN</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.Tin</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>CELL</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.PhoneCell</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>HOME</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.PhoneHome</label>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>WORK</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.PhoneWork</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>FAX</span>
+                            </label>
+                            <label class="form-control" readonly>@Model.PartnerViewModel.Partner.PhoneFax</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner End -->
+
+    <!-- ACH Start -->
+    <h2 class="small-title">ACH</h2>
+    <div class="row">
+        <div class="col-12 col-xl-7">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>INDIVIDUAL ID</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.PartnerViewModel.Partner.AchIndividualId" disabled/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="mb-5 top-label">
+                                <span>INDIVIDUAL NAME</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.PartnerViewModel.Partner.AchIndividualName" disabled/>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="mb-5 top-label">
+                                <span>STATUS</span>
+                            </label>
+                            <input class="form-control" placeholder="@Enum.GetName(typeof(AchServiceStatus), Model.PartnerViewModel.Partner.AchServiceStatus)" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT TYPE</span>
+                            </label>
+                            <input class="form-control" placeholder="@Enum.GetName(typeof(AchServiceStatus), Model.PartnerViewModel.Partner.AchAccountType)" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ROUTING NUMBER</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.PartnerViewModel.Partner.AchRoutingNumber" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>ACCOUNT NUMBER</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.PartnerViewModel.Partner.AchAccountNumber" disabled/>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="mb-5 top-label">
+                                <span>BANK NAME</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="@Model.PartnerViewModel.Partner.AchBankName" disabled/>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="mb-5 top-label">
+                                <span>BANK ADDRESS</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.PartnerViewModel.Partner.AchBankAddress" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ACH End -->
+</section>

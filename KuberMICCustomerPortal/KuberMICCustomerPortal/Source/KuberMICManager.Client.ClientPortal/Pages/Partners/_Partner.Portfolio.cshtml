@@ -1,0 +1,54 @@
+@model KuberMICManager.Client.WebUI.Pages.Partners.ViewPartnerModel
+
+<!-- Portfolio Start -->
+<section class="scroll-section partner_portfolio">
+    <h2 class="small-title">Portfolio</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase">POOL ACCOUNT</th>
+                                                <th class="text-muted text-medium text-uppercase" style="width:150px">MORTGAGE POOL DESCRIPTION</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:100px">TOTAL SHARES</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:100px">BEGINNING CAPITAL</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:150px">YEAR TO END CONTRIBITIONS</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:150px">YEAR TO END WITHDRAWALS</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:150px">YEAR TO END DISTRIBUTIONS</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="width:150px">INCOME OR (-) LOSS</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">ENDING CAPITAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.PartnerViewModel.Pool != null)
+                                            {
+                                                <tr role="row" class="odd">
+                                                    <td>@Model.PartnerViewModel.Pool.Account</td>
+                                                    <td>@Model.PartnerViewModel.Pool.Description</td>
+                                                    <td class="text-end">@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                    <td class="text-end">$@String.Format("{0:n3}", @Model.PartnerViewModel.Pool.CertPrepayFee)</td>
+                                                </tr>
+                                            }
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio End -->

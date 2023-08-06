@@ -1,0 +1,138 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- History Start -->
+<section class="scroll-section loan_history">
+    <h2 class="small-title">History</h2>
+    <!-- Content Start -->
+    <div class="data-table-boxed">
+        <!-- Controls Start -->
+        <div class="row mb-2">
+            <!-- Search Start -->
+            <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+                <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
+                    <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableBoxed_History" />
+                    <span class="search-magnifier-icon">
+                        <i data-acorn-icon="search"></i>
+                    </span>
+                    <span class="search-delete-icon d-none">
+                        <i data-acorn-icon="close"></i>
+                    </span>
+                </div>
+            </div>
+            <!-- Search End -->
+            <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+                <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+                    <!-- Export Start -->
+                    <button class="btn btn-icon btn-icon-only btn-foreground-alternate shadow datatable-export"
+                            data-bs-delay="0"
+                            data-datatable="#datatableBoxed_History"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Export"
+                            type="button">
+                        <i data-acorn-icon="download"></i>
+                    </button>
+                    <!-- Export End -->
+                    <!-- Length Start -->
+                    <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableBoxed_History" data-childSelector="span">
+                        <input id="DataTableTotalCount" name="DataTableTotalCount" type="hidden" value="@Model.LoanViewModel.LoanHistories.Count()" />
+                        <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                            <span class="btn btn-foreground-alternate dropdown-toggle"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="top"
+                                  data-bs-delay="0"
+                                  title="Item Count">
+                                25 Items
+                            </span>
+                        </button>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                            @{
+                                if (@Model.LoanViewModel.LoanHistories.Count() > 10)
+                                {
+                                    <a class="dropdown-item" href="#">10 Items</a>
+                                }
+                                if (@Model.LoanViewModel.LoanHistories.Count() > 50)
+                                {
+                                    <a class="dropdown-item" href="#">25 Items</a>
+                                }
+                                if (@Model.LoanViewModel.LoanHistories.Count() > 50)
+                                {
+                                    <a class="dropdown-item" href="#">50 Items</a>
+                                }
+                                if (@Model.LoanViewModel.LoanHistories.Count() > 100)
+                                {
+                                    <a class="dropdown-item" href="#">100 Items</a>
+                                }
+                            }
+                            <a class="dropdown-item active" href="#">All Items</a>
+                        </div>
+                    </div>
+                    <!-- Length End -->
+                </div>
+            </div>
+        </div>
+        <!-- Controls End -->
+        <!-- Table Start -->
+        <div>
+            <table id="datatableBoxed_History" class="stripe data-table nowrap hover">
+                <thead>
+                    <tr role="row">
+                        <th class="text-muted text-medium text-uppercase" style="width:100px">DATE RECEIVED</th>
+                        <th class="text-muted text-medium text-uppercase" style="width:100px">DATE DUE</th>
+                        <th class="text-muted text-medium text-uppercase" style="width:150px">REFERENCE</th>
+                        <th class="text-muted text-medium text-uppercase" style="width:60px">ACH</th>
+                        <th class="text-muted text-medium text-uppercase">PAYMENT CODE</th>
+                        <th class="text-muted text-medium text-uppercase text-end">TOTAL AMOUNT RECEIVED</th>
+                        <th class="text-muted text-medium text-uppercase text-end">APPLIED TO INTEREST</th>
+                        <th class="text-muted text-medium text-uppercase text-end" style="width:120px">APPLIED TO PRINCIPAL</th>
+                        <th class="text-muted text-medium text-uppercase text-end" style="width:100px">APPLIED TO CHARGES PRINCIPAL</th>
+                        <th class="text-muted text-medium text-uppercase text-end" style="width:100px">APPLIED TO LENDER FEE</th>
+                        <th class="text-muted text-medium text-uppercase text-end" style="width:100px">APPLIED TO UNPAID INTEREST</th>
+                        <th class="text-muted text-medium text-uppercase text-end">LOAN BALANCE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index = 0;
+                        foreach (var history in Model.LoanViewModel.LoanHistories?.OrderBy(l => l.SysTimeStamp))
+                        {
+                            <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                <td>@String.Format("{0:MM/dd/yyyy}",history.DateRec)</td>
+                                <td>@String.Format("{0:MM/dd/yyyy}",history.DateDue)</td>
+                                <td>@history.Reference</td>
+                                <td>
+                                    @if (history.PayMethod == 7)
+                                    {
+                                        <span class="badge bg-outline-primary me-1">ACH</span>
+                                    }
+                                </td>
+                                <td>@history.SourceTyp</td>
+                                <td class="text-end">
+                                    <label class="">@String.Format("{0:$#,#.00;($#,#.00)}", Model.GetTotalAmountReceived(history))</label>
+                                </td>
+                                <td class="text-end">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToInterest)</td>
+                                <td class="text-end">
+                                    @if (history.ToPrincipal < 0)
+                                    {
+                                        <label class="text-danger">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToPrincipal)</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToPrincipal)</label>
+                                    }
+                                </td>
+                                <td class="text-end">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToChargesPrin)</td>
+                                <td class="text-end">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToLenderFee)</td>
+                                <td class="text-end">@String.Format("{0:$#,#.00;($#,#.00)}", history.ToUnpaidInterest)</td>
+                                <td class="text-end">@String.Format("{0:$#,#.00;($#,#.00)}", history.LoanBalance)</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Table End -->
+    </div>
+    <!-- Content End -->
+</section>
+<!-- History End -->

@@ -1,0 +1,60 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "_FullLayout";
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){
+      "/js/vendor/jquery.validate/jquery.validate.min.js",
+      "/js/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "/js/vendor/jquery.validate/additional-methods.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){
+      "/js/pages/auth.login.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    ViewBag.Title = "Login Page"; 
+    ViewBag.Description = "Login with username and password";
+}
+
+@section RightSide {
+<div class="mb-5">
+    <h2 class="cta-1 mb-0 text-primary">Welcome,</h2>
+    <h2 class="cta-1 text-primary">let's get started!</h2>
+</div>
+<div class="mb-5">
+    <p class="h6">Please use your credentials to login.</p>
+</div>
+<div class="mb-5">
+    <form id="form1" class="tooltip-end-bottom" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3 filled form-group tooltip-end-top">
+        <i data-acorn-icon="email"></i>
+        <input placeholder="Email" asp-for="Input.Email" class="form-control" autocomplete="username" autofocus="autofocus" onFocus="this.select()" required/>
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3 filled form-group tooltip-end-top">
+        <i data-acorn-icon="lock-off"></i>
+        <input placeholder="Password" asp-for="Input.Password" class="form-control pe-7" required />
+        <a title="Click here to reset your password" class="text-small position-absolute t-3 e-3" asp-page="./forgotpassword">Forgot Password?</a>
+    </div>
+    <div class="mb-3 form-group">
+        <div class="checkbox">
+            <label asp-for="Input.RememberMe">
+                <input asp-for="Input.RememberMe" />
+                @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Login</button>
+    </form>
+</div>
+<div>
+    <h6 class="text-small">KMIC Client Portal-@*@Model.ServerID-*@@Model.Version</h6>
+</div>
+}

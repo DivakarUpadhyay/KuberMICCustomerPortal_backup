@@ -1,0 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@using KuberMICManager.Client.WebUI
+@using KuberMICManager.Core.Domain.Entities
+@using KuberMICManager.Core.Domain.Entities.Identity
+@using static KuberMICManager.Core.Domain.Entities.Application.Common
+
+@namespace KuberMICManager.Client.WebUI.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject SignInManager<ApplicationUser> SignInManager

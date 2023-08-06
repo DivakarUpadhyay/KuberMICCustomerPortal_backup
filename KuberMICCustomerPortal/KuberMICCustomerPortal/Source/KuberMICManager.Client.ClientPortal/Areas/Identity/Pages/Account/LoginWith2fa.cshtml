@@ -1,0 +1,63 @@
+﻿@page
+@model LoginWith2faModel
+@{
+    Layout = "_FullLayout";
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){
+      "/js/vendor/jquery.validate/jquery.validate.min.js",
+      "/js/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "/js/vendor/jquery.validate/additional-methods.min.js"
+    };
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){
+      "/js/pages/auth.login.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    ViewData["Title"] = "Two-factor authentication";
+    ViewBag.Description = "Login with Two-factor authentication";
+}
+
+@section RightSide {
+<div class="mb-5">
+    <h2 class="cta-1 mb-0 text-primary">Welcome,</h2>
+    <h2 class="cta-1 text-primary">let's get started!</h2>
+</div>
+<div class="mb-5">
+    <p class="h6">Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+</div>
+
+<div>
+    <form id="form1" class="tooltip-end-bottom" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+    <input asp-for="RememberMe" type="hidden" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3 filled form-group tooltip-end-top">
+        <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+        <label asp-for="Input.TwoFactorCode" class="form-label"></label>
+        <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+    </div>
+    @*<div>
+        <div class="checkbox">
+            <label asp-for="Input.RememberMachine" class="form-label">
+                <input asp-for="Input.RememberMachine" />
+                @Html.DisplayNameFor(m => m.Input.RememberMachine)
+            </label>
+        </div>
+    </div>*@
+    <button type="submit" class="btn btn-lg btn-primary">Login</button>
+    </form>
+</div>
+<div class="mb-5">
+    <p>
+        Don't have access to your authenticator device? You can
+        <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">log in with a recovery code</a>.
+    </p>
+</div>
+<div>
+        <h6 class="text-small">KMIC Client Portal-@*@Model.ServerID-*@@Model.Version</h6>
+</div>
+}

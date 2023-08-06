@@ -1,0 +1,37 @@
+﻿==============================================================================
+- Powershell Commands to update the database                                 = 
+==============================================================================
+
+To open the Package Manager console:
+
+	Tools --> NuGet Package Manager --> Package Manager Console
+
+###############################################################################
+#				         Generate SQL Scripts                                 #
+###############################################################################
+-- See: https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell#script-migration
+
+Script-Migration -From 0 -Project KuberMICManager.Infrastructure.DataAccess -Context AppDataContext 
+
+-- You can generate the SQL script _from_ a named migration, for example -From 20181009200053_AddTestwebuser
+   will generate the SQL after 20181009200053_AddTestwebuser (not including this one)
+
+###############################################################################
+#                             Drop the database                               #
+###############################################################################
+
+Drop-Database -Project KuberMICManager.Infrastructure.DataAccess -Context ApplicationDbContext
+
+###############################################################################
+#                       Apply database with Migrations                        #
+###############################################################################
+
+Update-Database -Project KuberMICManager.Infrastructure.DataAccess -Context ApplicationDbContext
+
+###############################################################################
+#                               Add/Update Migrations                         #
+###############################################################################
+
+#--->> Replace <<NAME>> with the actual name of the migration
+
+Add-Migration -name <<NAME>> -Project KuberMICManager.Infrastructure.DataAccess -Context ApplicationDbContext

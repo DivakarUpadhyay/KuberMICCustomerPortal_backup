@@ -1,0 +1,26 @@
+﻿<div class="modal modal-right fade" id="EditNotesModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-xl">
+        <div class="modal-content">
+            <form method="post" id="LoanNotesForm" onsubmit="return false;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Notes: <span id="accountID"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                @*@await Html.PartialAsync("_StatusMessage", Model.Message)*@
+
+                <div class="modal-body p-0">
+                    <div class="card-body editor-container">
+                        <div class="html-editor sh-19" id="quillEditor"></div>
+                        <input type="hidden" name="recID" id="recID" value="" />
+                        <textarea name="loanNotes" id="loanNotes" style="display:none"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" asp-page-handler="SaveNotes" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

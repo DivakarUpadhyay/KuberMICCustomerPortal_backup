@@ -1,0 +1,70 @@
+﻿@{
+    List<string> HtmlTagData = new List<string>(){};
+    if(ViewBag.HtmlTagData!= null){
+        @foreach (KeyValuePair<string, string> item in ViewBag.HtmlTagData)
+        {
+            HtmlTagData.Add($"data-{@item.Key}='{@item.Value}'");
+        }
+    }
+
+    List<string> CustomNavData = new List<string>(){};
+    if(ViewBag.CustomNavData!= null){
+        @foreach (KeyValuePair<string, string> item in ViewBag.CustomNavData)
+        {
+            CustomNavData.Add($"data-{@item.Key}=\"{@item.Value}\"");
+        }
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en" data-url-prefix="/" data-footer="true" @Html.Raw(String.Join(" ",HtmlTagData))>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@ViewBag.Title - Kuber MIC Manager</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <partial name="_Layout.Head" />
+</head>
+
+<body>
+    <div id="root">
+        <div id="nav" class="nav-container d-flex" @Html.Raw(String.Join(" ",CustomNavData))>
+            <partial name="_Layout.Nav" />
+        </div>
+        <main>
+            <div class="container">
+              <!-- Title and Top Buttons Start -->
+              <div class="page-title-container">
+                <div class="row">
+                  <!-- Title Start -->
+                  <div class="col-12 col-md-7">
+                    <h1 class="mb-0 pb-0 display-4" id="title">@ViewBag.Title</h1>
+                    <partial name="_Layout.Breadcrumb"/>
+                  </div>
+                  <!-- Title End -->
+                </div>
+              </div>
+              <!-- Title and Top Buttons End -->
+
+              <!-- Content Start -->
+              <div class="row">
+                <div class="col-md-3">
+                    <partial name="_UsersNav" />
+                </div>
+                <div class="col-md-9 profile-body">
+                    @RenderBody()
+                </div>
+              </div>
+              <!-- Content End -->
+            </div>
+        </main>
+        <partial name="_Layout.Footer" />
+    </div>
+    <partial name="_Layout.Scripts"/>
+</body>
+</html>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

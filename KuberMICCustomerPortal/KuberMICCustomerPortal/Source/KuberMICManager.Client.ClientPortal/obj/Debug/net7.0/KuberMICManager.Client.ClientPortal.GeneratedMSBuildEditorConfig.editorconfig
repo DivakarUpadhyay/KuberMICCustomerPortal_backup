@@ -1,0 +1,321 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = KuberMICManager.Client.ClientPortal
+build_property.RootNamespace = KuberMICManager.Client.ClientPortal
+build_property.ProjectDir = G:\Agrwal\KuberMICCustomerPortal\KuberMICCustomerPortal\Source\KuberMICManager.Client.ClientPortal\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = G:\Agrwal\KuberMICCustomerPortal\KuberMICCustomerPortal\Source\KuberMICManager.Client.ClientPortal
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Lockout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/Manage/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcTWFuYWdlXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/Manage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcTWFuYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/Manage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcTWFuYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/Manage/_UsersNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcTWFuYWdlXF9Vc2Vyc05hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/NewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcTmV3VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/_UsersNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcX1VzZXJzTmF2LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/Users/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVXNlcnNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/ViewLoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcVmlld0xvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Layout.SideNavLoanDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xheW91dC5TaWRlTmF2TG9hbkRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Layout.SideNavLoans.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xheW91dC5TaWRlTmF2TG9hbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Attachments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uQXR0YWNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Charges.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uQ2hhcmdlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.CoBorrowers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uQ29Cb3Jyb3dlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.CustomFields.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uQ3VzdG9tRmllbGRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Funding.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uRnVuZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Notes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uTm90ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Properties.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uUHJvcGVydGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.Terms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uVGVybXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Loans/_Loan.TrustLedger.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hbnNcX0xvYW4uVHJ1c3RMZWRnZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/ViewPartner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcVmlld1BhcnRuZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Layout.SideNavPartnerDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX0xheW91dC5TaWRlTmF2UGFydG5lckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Layout.SideNavPartners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX0xheW91dC5TaWRlTmF2UGFydG5lcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.Attachments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuQXR0YWNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.Certificates.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuQ2VydGlmaWNhdGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.CustomFields.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuQ3VzdG9tRmllbGRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.Notes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuTm90ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.Partner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuUGFydG5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Partners/_Partner.Portfolio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNcX1BhcnRuZXIuUG9ydGZvbGlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_CookieConsentPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Db29raWVDb25zZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_FullLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9GdWxsTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.Breadcrumb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuQnJlYWRjcnVtYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuRm9vdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.Head.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuSGVhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.Nav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuTmF2LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.Scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuU2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.SearchModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuU2VhcmNoTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_Layout.SettingsModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuU2V0dGluZ3NNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_NotesEditPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob3Rlc0VkaXRQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_PaginationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9QYWdpbmF0aW9uUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Shared/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TdGF0dXNNZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/Tools/EventLogs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9vbHNcRXZlbnRMb2dzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/_Dashboard.ActiveInactiveUserDetailsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0Rhc2hib2FyZC5BY3RpdmVJbmFjdGl2ZVVzZXJEZXRhaWxzVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/_Dashboard.LoanStatsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0Rhc2hib2FyZC5Mb2FuU3RhdHNWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Agrwal/KuberMICCustomerPortal/KuberMICCustomerPortal/Source/KuberMICManager.Client.ClientPortal/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

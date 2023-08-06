@@ -1,0 +1,150 @@
+<div class="col-auto side-menu-container">
+  <ul class="sw-25 side-menu mb-0 primary" id="menuSide">
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.All)" class="pb-0">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">@PartnerFilterType.All.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.ShareBalanceGreaterThanZero)" class="pb-0">
+        <i data-acorn-icon="check-square" class="icon"></i>
+        <span class="label">@PartnerFilterType.ShareBalanceGreaterThanZero.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.Active)" class="pb-0">
+        <i data-acorn-icon="check-square" class="icon"></i>
+        <span class="label">@PartnerFilterType.Active.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.ACHActive)" class="pb-0">
+        <i data-acorn-icon="pos" class="icon"></i>
+        <span class="label">@PartnerFilterType.ACHActive.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.Growth)" class="pb-0">
+        <i data-acorn-icon="chart-up" class="icon"></i>
+        <span class="label">@PartnerFilterType.Growth.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.Income)" class="pb-0">
+        <i data-acorn-icon="money" class="icon"></i>
+        <span class="label">@PartnerFilterType.Income.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.DateCore)" class="pb-0">
+        <i data-acorn-icon="suitcase" class="icon"></i>
+        <span class="label">@PartnerFilterType.DateCore.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.Management)">
+        <i data-acorn-icon="building" class="icon"></i>
+        <span class="label">@PartnerFilterType.Management.ToDescription()</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" data-bs-target="#account">
+        <i data-acorn-icon="user" class="icon"></i>
+        <span class="label">Account</span>
+      </a>
+      <ul>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.NonRegisteredIndividual)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.NonRegisteredIndividual.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.NonRegisteredCompany)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.NonRegisteredCompany.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.NonRegisteredJTWROS)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.NonRegisteredJTWROS.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.TFSA)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.TFSA.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RRSP)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RRSP.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RRSPSpousal)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RRSPSpousal.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.LIRA)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.LIRA.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.LRSP)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.LRSP.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RESPFamily)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RESPFamily.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RLSP)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RLSP.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.LIF)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.LIF.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.NewLIF)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.NewLIF.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RLIF)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RLIF.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RRIF)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RRIF.ToDescription()</span>
+          </a>
+        </li>
+        <li>
+          <a asp-page="/Partners/Index" asp-route-filtertype="@((int)PartnerFilterType.RRIFSpousal)" class="pb-0">
+            <i data-acorn-icon="money-bag" class="icon"></i>
+            <span class="label">@PartnerFilterType.RRIFSpousal.ToDescription()</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

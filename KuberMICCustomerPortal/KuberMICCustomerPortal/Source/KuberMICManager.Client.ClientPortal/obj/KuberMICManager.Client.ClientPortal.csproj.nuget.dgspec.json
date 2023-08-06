@@ -1,0 +1,357 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Client.ClientPortal\\KuberMICManager.Client.ClientPortal.csproj": {}
+  },
+  "projects": {
+    "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Client.ClientPortal\\KuberMICManager.Client.ClientPortal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Client.ClientPortal\\KuberMICManager.Client.ClientPortal.csproj",
+        "projectName": "KuberMICManager.Client.ClientPortal",
+        "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Client.ClientPortal\\KuberMICManager.Client.ClientPortal.csproj",
+        "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+        "outputPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Client.ClientPortal\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\KuberMICManager.Core.Application.csproj": {
+                "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\KuberMICManager.Core.Application.csproj"
+              },
+              "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj": {
+                "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj"
+              },
+              "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\KuberMICManager.Infrastructure.DataAccess.csproj": {
+                "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\KuberMICManager.Infrastructure.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "RtfPipe": {
+              "target": "Package",
+              "version": "[2.0.7677.4303, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.2.2, )"
+            },
+            "sautinsoft.htmltortf": {
+              "target": "Package",
+              "version": "[8.4.11.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\KuberMICManager.Core.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\KuberMICManager.Core.Application.csproj",
+        "projectName": "KuberMICManager.Core.Application",
+        "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\KuberMICManager.Core.Application.csproj",
+        "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+        "outputPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj": {
+                "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
+            "Google.Apis.Drive.v3": {
+              "target": "Package",
+              "version": "[1.57.0.2859, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "PuppeteerSharp": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj",
+        "projectName": "KuberMICManager.Core.Domain",
+        "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj",
+        "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+        "outputPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\KuberMICManager.Infrastructure.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\KuberMICManager.Infrastructure.DataAccess.csproj",
+        "projectName": "KuberMICManager.Infrastructure.DataAccess",
+        "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\KuberMICManager.Infrastructure.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+        "outputPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Infrastructure.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj": {
+                "projectPath": "G:\\Agrwal\\KuberMICCustomerPortal\\KuberMICCustomerPortal\\Source\\KuberMICManager.Core.Domain\\KuberMICManager.Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlserver": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

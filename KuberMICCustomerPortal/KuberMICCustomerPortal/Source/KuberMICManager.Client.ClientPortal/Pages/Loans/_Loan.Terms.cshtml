@@ -1,0 +1,172 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Terms Start -->
+<section class="scroll-section loan_terms">
+    <h2 class="small-title">Terms</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">GENERAL</h2>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>ORIGINAL AMOUNT</span>
+                            </label>
+                            <input class="form-control ql-color-white" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.OrigBal)" disabled/>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>NOTE RATE</span>
+                            </label>
+                            <input class="form-control" placeholder="@String.Format("{0:n2}", Model.LoanViewModel.Loan.NoteRate)%" disabled/>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>SOLD RATE</span>
+                            </label>
+                            <label class="form-check w-100 mb-0">
+                                <input type="checkbox" class="form-check-input mt-2" checked="@(Model.LoanViewModel.Loan.UseSoldRate == true)" disabled/>
+                                <span class="mb-1 lh-1-25">
+                                    <input class="form-control" placeholder="@String.Format("{0:n2}", Model.LoanViewModel.Loan.SoldRate)%" disabled/>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-5 top-label">
+                                <span>PRIORITY</span>
+                            </label>
+                            <input class="form-control" placeholder="@Model.LoanViewModel.Loan.Priority" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-4">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">UNEARNED DISCOUNT/FEES</h2>
+                    <label class="mb-6 top-label">
+                        <span>CURRENT BALANCE</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.UnearnedDisc)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>ACCRUAL METHOD</span>
+                    </label>
+                    <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.AccrualMethod" disabled/>
+                </div>
+            </div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">LOAN BALANCES</h2>
+                    <label class="mb-6 top-label">
+                        <span>PRINCIPAL BALANCE</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.PrinBal)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>TRUST BALANCE</span>
+                    </label>
+                    <input class="form-control" placeholder="$" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>UNPAID LATE CHARGES</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.UnpaidLateCharges)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>UNPAID CHARGES</span>
+                    </label>
+                    <input class="form-control" placeholder="$" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>UNPAID INTEREST</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.UnpaidInterest)" disabled/>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-4">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">PAYMENT FREQUENCY</h2>
+                    <label class="mb-6 top-label">
+                        <span>FREQUENCY</span>
+                    </label>
+                    <input class="form-control" placeholder="@Model.LoanViewModel.Loan.PmtFreq" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>DAY DUE</span>
+                    </label>
+                    <input class="form-control ql-color-white" placeholder="@Model.LoanViewModel.Loan.DueDay" disabled/>
+                </div>
+            </div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">REGULAR PAYMENT</h2>
+                    <label class="mb-6 top-label">
+                        <span>P & I</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.PmtPi)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>RESERVE</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.PmtReserve)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>IMPOUND</span>
+                    </label>
+                    <input class="form-control" placeholder="$@String.Format("{0:n2}", Model.LoanViewModel.Loan.PmtImpound)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>OTHER PAYMENTS</span>
+                    </label>
+                    <input class="form-control" placeholder="$" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>TOTAL PAYMENTS</span>
+                    </label>
+                    <input class="form-control" placeholder="$" disabled/>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-4">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h2 class="text-medium">IMPORTANT DATES</h2>
+                    <label class="mb-6 top-label">
+                        <span>CLOSING</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.ClosingDate)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>FIRST PAYMENT</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.FirstPaymentDate)")" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>PURCHASE</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.PurchaseDate)")" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>BOOKING</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.BookingDate)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>INTEREST PAID TO</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.PaidToDate)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>NEXT PAYMENT</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.NextDueDate)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>NEXT REVISION</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.NextRevision)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>MATURITY</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.MaturityDate)" disabled/>
+                    <label class="mb-5 top-label">
+                        <span>PAID OFF</span>
+                    </label>
+                    <input class="form-control" placeholder="@String.Format("{0:MM/dd/yyyy}",Model.LoanViewModel.Loan.PaidOffDate)" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Terms End -->

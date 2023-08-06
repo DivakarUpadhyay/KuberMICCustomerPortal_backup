@@ -1,0 +1,117 @@
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="nav-content d-flex">
+  <!-- Logo Start -->
+  <div class="logo position-relative">
+    <a asp-page="/Dashboard">
+      <!-- Logo can be added directly -->
+      <img src="/img/logo/kuber-logo-white.png" alt="logo" />
+
+      <!-- Or added via css to provide different ones for different color themes -->
+      @*<div class="img"></div>*@
+    </a>
+  </div>
+  <div class="logo position-relative">
+    <a class="navbar-brand text-white" asp-page="/Dashboard">&nbsp; MIC Client Portal</a>
+  </div>
+  <!-- Logo End -->
+
+  <!-- User Menu Start -->
+  <div class="user-container d-flex">
+    <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="mt-1 me-2 d-inline-block text-white icon-22 bi-person-circle"></i>
+      <div class="name">@UserManager.GetUserName(User) </div>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end user-menu wide">
+      <div class="row mb-3 ms-0 me-0">
+        <div class="col-12 ps-1 mb-2">
+          <div class="text-extra-small text-primary">ACCOUNT</div>
+        </div>
+        <div class="col-12 ps-1 pe-1">
+          <ul class="list-unstyled">
+            <li>
+              <a asp-area="Identity" asp-page="/Account/Manage/Index" title="My Profile">My Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mb-1 ms-0 me-0">
+        <div class="col-12 p-1 mb-3 pt-3">
+          <div class="separator-light"></div>
+        </div>
+        <div class="col-6 ps-1 pe-1">
+          <ul class="list-unstyled">
+            <li>
+              <a href="https://portal.kubermic.com">
+                <i data-acorn-icon="help" class="me-2" data-acorn-size="17"></i>
+                <span class="align-middle">Help</span>
+              </a>
+            </li>
+            <li>
+              @if (SignInManager.IsSignedIn(User))
+              {
+                @*<form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/index", new { area = "" })" method="post" id="logoutForm">
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">
+                        <i data-acorn-icon="logout" data-acorn-size="17"></i>
+                        <span class="align-middle">Logout</span>
+                    </button>
+                </form>*@
+                <a asp-area="Identity" asp-page="/Account/Logout">
+                    <i data-acorn-icon="logout" data-acorn-size="17"></i>
+                    <span class="align-middle">Logout</span>
+                </a>
+              }
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User Menu End -->
+
+  <!-- Menu Start -->
+  <div class="menu-container flex-grow-1">
+    <ul id="menu" class="menu">
+      @if (User.Claims.Any(c => c.Type == "CanViewLoans" && c.Value == "true"))
+      {
+        <li>
+            <a asp-page="/Loans/Index">
+                <i data-acorn-icon="home" class="icon" data-acorn-size="18"></i>
+                <span class="label">Loans</span>
+            </a>
+        </li>
+      }
+      @if (User.Claims.Any(c => c.Type == "CanViewInvestments" && c.Value == "true"))
+      {
+        <li>
+          <a asp-page="/Partners/Index">
+            <i data-acorn-icon="money-bag" class="icon" data-acorn-size="18"></i>
+            <span class="label">Partners</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+  <!-- Menu End -->
+
+  <!-- Mobile Buttons Start -->
+  <div class="mobile-buttons-container">
+    <!-- Scrollspy Mobile Button Start -->
+    <a href="#" id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+      <i data-acorn-icon="menu-dropdown"></i>
+    </a>
+    <!-- Scrollspy Mobile Button End -->
+
+    <!-- Scrollspy Mobile Dropdown Start -->
+    <div class="dropdown-menu dropdown-menu-end" id="scrollSpyDropdown"></div>
+    <!-- Scrollspy Mobile Dropdown End -->
+
+    <!-- Menu Button Start -->
+    <a href="#" id="mobileMenuButton" class="menu-button">
+      <i data-acorn-icon="menu"></i>
+    </a>
+    <!-- Menu Button End -->
+  </div>
+  <!-- Mobile Buttons End -->
+</div>
+<div class="nav-shadow"></div>

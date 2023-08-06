@@ -1,0 +1,28 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    Layout = "_FullLayout";
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){
+      "/js/pages/auth.login.js"
+    };
+    ViewBag.PageScripts = PageScripts;
+
+    ViewData["Title"] = "Access denied";
+    ViewBag.Description = "Access denied";
+}
+
+@section RightSide {
+<div class="mb-5">
+    <h2 class="cta-1 text-primary">@ViewData["Title"]</h2>
+</div>
+<div class="mb-5">
+    <p class="h6 text-danger">You do not have access to this resource.</p>
+</div>
+}

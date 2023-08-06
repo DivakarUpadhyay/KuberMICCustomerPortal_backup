@@ -1,0 +1,43 @@
+@model KuberMICManager.Client.WebUI.Pages.Partners.ViewPartnerModel
+
+<!-- Custom Fields Start -->
+<section class="scroll-section partner_custom_fields">
+    <h2 class="small-title">Custom Fields</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase" style="width:300px">NAME</th>
+                                                <th class="text-muted text-medium text-uppercase">VALUE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int index = 0;
+                                                foreach (var customField in Model.PartnerViewModel.UDFFields?.OrderBy(F => F.Sequence))
+                                                {
+                                                    <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                                        <td>@customField.Name</td>
+                                                        <td>@Model.PartnerViewModel.UDFValues.FirstOrDefault(V => V.ParentRecId == customField.RecId)?.Value</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Custom Fields End -->

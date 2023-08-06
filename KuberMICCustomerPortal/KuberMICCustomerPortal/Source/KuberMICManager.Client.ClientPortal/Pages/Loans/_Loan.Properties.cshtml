@@ -1,0 +1,130 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Properties Start -->
+<section class="scroll-section loan_properties">
+    <h2 class="small-title">Properties</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase" style="min-width:80px">PRIMARY</th>
+                                                <th class="text-muted text-medium text-uppercase" style="min-width:80px">LOAN PRIORITY</th>
+                                                <th class="text-muted text-medium text-uppercase" style="min-width:100px">DESCRIPTION</th>
+                                                <th class="text-muted text-medium text-uppercase" style="min-width:180px">ADDRESS</th>
+                                                <th class="text-muted text-medium text-uppercase">COUNTY</th>
+                                                <th class="text-muted text-medium text-uppercase" style="min-width:100px">PROPERTY TYPE</th>
+                                                <th class="text-muted text-medium text-uppercase">OCCUPANCY</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="min-width:150px">APPRAISED VALUE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="min-width:100px">APPRAISAL DATE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="min-width:70px">LTV</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="min-width:100px">ZONING</th>
+                                                <th class="text-muted text-medium text-uppercase text-end" style="min-width:120px">PLEDGED EQUITY</th>
+                                                <th style="min-width:100px"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int index = 0;
+                                                foreach (var property in Model.LoanViewModel.Properties?.OrderBy(p => p.SysCreatedDate))
+                                                {
+                                                    <tr role="row" class="@((index % 2 == 0) ? "odd" : "even")">
+                                                        <td><input type="checkbox" class="form-check-input" checked="@(property.Primary == true)" disabled/></td>
+                                                        <td>@property.Priority?.Ordinal()</td>
+                                                        <td>@property.Description</td>
+                                                        <td>@property.Street<br> @property.City @property.State @property.ZipCode</td>
+                                                        <td>@property.County</td>
+                                                        <td>@property.PropertyType</td>
+                                                        <td>@property.Occupancy</td>
+                                                        <td class="text-end">@(property.AppraiserFmv > 0 ? String.Format("${0:n2}", property.AppraiserFmv) : "") </td>
+                                                        <td class="text-end">@String.Format("{0:MM/dd/yyyy}",property.AppraisalDate)</td>
+                                                        <td class="text-end">@((property.Ltv == null) ? "" : @String.Format("{0:n2}", property.Ltv)+"%")</td>
+                                                        <td class="text-end">@property.Zoning</td>
+                                                        <td class="text-end">@(property.PledgedEquity > 0 ? String.Format("${0:n2}", property.PledgedEquity) : "")</td>
+                                                        <td class="text-end">
+                                                            <button
+                                                                class="btn btn-primary mt-2 @(Model.LoanViewModel.Liens.Any(l => l.PropRecId == property.RecId) ? "" : "disabled")"
+                                                                type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#propertyLien_@index"
+                                                                aria-expanded="false"
+                                                                aria-controls="propertyLien_@index"
+                                                                >
+                                                                Lien
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr role="row" class="@((index % 2 == 0) ? "odd" : "even")">
+                                                        <td colspan="13">
+                                                            <!-- Lien Start -->
+                                                            <div class="row">
+                                                                <div class="collapse" id="propertyLien_@index">
+                                                                    <div class="card mb-2">
+                                                                        <div class="card-body">
+                                                                            <div class="dataTables_wrapper">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <div class="table-container">
+                                                                                            <table class="stripe dataTable">
+                                                                                                <thead>
+                                                                                                    <tr role="row">
+                                                                                                        <th class="text-muted text-medium text-uppercase" style="width: 70px">PRIORITY</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase" style="width: 200px">LIEN HOLDER</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 140px">ORIGINAL BALANCE</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 140px">CURRENT BALANCE</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 140px">REGULAR PAYMENT</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 110px">LAST CHECKED</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 120px">ACCOUNT</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end">CONTACT NAME</th>
+                                                                                                        <th class="text-muted text-medium text-uppercase text-end" style="width: 90px">PHONE</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    @foreach (var lien in Model.LoanViewModel.Liens.Where(l => l.PropRecId == property.RecId).ToList())
+                                                                                                    {
+                                                                                                        <tr role="row">
+                                                                                                            <td class="text-center">@lien.Priority</td>
+                                                                                                            <td>@lien.Holder</td>
+                                                                                                            <td class="text-end">@(lien.Original > 0 ? String.Format("${0:n2}", lien.Original) : "")</td>
+                                                                                                            <td class="text-end">@(lien.Current > 0 ? String.Format("${0:n2}", lien.Current) : "")</td>
+                                                                                                            <td class="text-end">@(lien.Payment > 0 ? String.Format("${0:n2}", lien.Payment) : "")</td>
+                                                                                                            <td class="text-end">@String.Format("{0:MM/dd/yyyy}",lien.LastChecked)</td>
+                                                                                                            <td class="text-end">@lien.AccountNo</td>
+                                                                                                            <td class="text-end">@lien.Contact</td>
+                                                                                                            <td class="text-end">@lien.Phone</td>
+                                                                                                        </tr>
+                                                                                                    }
+                                                                                                </tbody>                                      
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Lien End -->
+                                                        </td>
+                                                    </tr>
+                                                    index++;
+                                                }
+                                            }
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Properties End -->

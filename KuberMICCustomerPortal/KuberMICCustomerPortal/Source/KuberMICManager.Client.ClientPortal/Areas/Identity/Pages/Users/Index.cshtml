@@ -1,0 +1,75 @@
+﻿@page
+@inject UserManager<ApplicationUser> UserManager
+@model IndexModel
+@{
+    Dictionary<string, string> HtmlTagData = new Dictionary<string, string>(){};
+    ViewBag.HtmlTagData = HtmlTagData;
+
+    List<string> PageStyles = new List<string>(){};
+    ViewBag.PageStyles = PageStyles;
+
+    List<string> VendorScripts = new List<string>(){};
+    ViewBag.VendorScripts = VendorScripts;
+
+    List<string> PageScripts = new List<string>(){};
+    ViewBag.PageScripts = PageScripts;
+
+    Dictionary<string, string> Breadcrumbs = new Dictionary<string, string>(){
+        {"/dashboard","Home"},
+        {"/identity/users/index","User Management"}
+    };
+    ViewBag.Breadcrumbs = Breadcrumbs; 
+
+    ViewData["Title"] = "All Users";
+    ViewBag.Description = "Manage users";
+}
+
+<h4>@ViewData["Title"]</h4>
+<div class="row">
+    <div class="col-md-6">
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead style="background-color: #ddd;">
+        <tr>
+            <th>UserName</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>CompanyName</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.applicationUsers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.CompanyName)
+                </td>
+                <td>
+                    <a asp-page="./manage/edit" asp-route-id="@user.Id">Edit</a> |
+                    <a asp-page="./manage/details" asp-route-id="@user.Id">Details</a>
+                    @*Make sure a user cannot delete himself, vzadmin, web user or test web users*@
+                    @if (user.UserName != UserManager.GetUserName(User) && user.UserName != "vzadmin" && user.UserName != Model.acPostReqUserName && user.UserName != Model.acPostReqTestUserName)
+                    {
+                        <span>|</span>
+                        <a asp-page="./manage/delete" asp-route-id="@user.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

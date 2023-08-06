@@ -1,0 +1,65 @@
+@model KuberMICManager.Client.WebUI.Pages.Loans.ViewLoanModel
+
+<!-- Funding Start -->
+<section class="scroll-section loan_funding">
+    <h2 class="small-title">Funding</h2>
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-container">
+                                    <table class="stripe dataTable">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="text-muted text-medium text-uppercase">ACCOUNT</th>
+                                                <th class="text-muted text-medium text-uppercase">LENDER NAME</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">% OWNED</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">LENDER RATE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">PRINCIPAL BALANCE</th>
+                                                <th class="text-muted text-medium text-uppercase text-end">REGULAR PAYMENT</th>
+                                                <th class="text-muted text-medium text-uppercase text-center" style="width:100px">GST</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int index = 0;
+                                                foreach (var funding in Model.LoanViewModel.Fundings)
+                                                {
+                                                    <tr role="row" class="@((index++ % 2 == 0) ? "odd" : "even")">
+                                                        <td>@Model.LoanViewModel.lenders.Where(l => l.RecId == funding.LenderRecId).FirstOrDefault().Account</td>
+                                                        <td>@Model.LoanViewModel.lenders.Where(l => l.RecId == funding.LenderRecId).FirstOrDefault().FullName</td>
+                                                        <td class="text-end">
+                                                            @{
+                                                                var pctOwned = (funding.DrawControl/funding.DrawControl) * 100;
+                                                                <label class="">@String.Format("{0:n2}", pctOwned)%</label>
+                                                            }
+                                                        </td>
+                                                        <td class="text-end">
+                                                            @{
+                                                                var rate = Model.LoanViewModel.Loan.SoldRate > 0 ? Model.LoanViewModel.Loan.SoldRate : Model.LoanViewModel.Loan.NoteRate;
+                                                                <label class="">@String.Format("{0:n2}", rate)%</label>
+                                                            }
+                                                        </td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", funding.DrawControl)</td>
+                                                        <td class="text-end">$@String.Format("{0:n2}", Model.LoanViewModel.Loan.PmtPi)</td>
+                                                        <td class="text-center">
+                                                            <input type="checkbox" class="form-check-input mt-2" checked="@funding.Gstuse == true" disabled/>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>                                      
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Funding End -->

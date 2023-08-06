@@ -1,0 +1,890 @@
+@using KuberMICManager.Core.Domain.ViewModels
+@model DashboardLoanViewModel
+
+<!-- Dashboard - Loan Stats Partial View Start -->
+<div class="col-12 col-xl-8">
+    <!-- Mortgage Summary by Mortgage Priority Start -->
+    <h2 class="small-title">Mortgage Summary by Mortgage Priority</h2>
+    <div class="row gx-2">
+        <div class="col-12 p-0">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-2 col-md-2 d-flex align-items-center">
+                            <label class="text-muted text-small text-uppercase">Mortgage Priority</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                            <label class="text-muted text-small text-uppercase">No of Mortgages</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-0">
+                            <label class="text-muted text-small text-uppercase text-end">Average Appraisal</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-0">
+                            <label class="text-muted text-small text-uppercase text-end">Average Mortgage Amount</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-2">
+                            <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                            <label class="text-muted text-small text-uppercase text-end">% of AUM</label>
+                        </div>
+                    </div>
+                    <div class="row g-0 h-100 align-content-center mb-2">
+                        <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                            <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=7")' class="body-link text-truncate">First</a>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                            <span>@Model.NoOfLoansFirst</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.AverageAppraisalFirst)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.GetAverageLoanAmountFirst())</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceFirst)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>@String.Format("{0:n2}", @Model.PctOfAUMFirst)%</span>
+                        </div>
+                    </div>
+                    <div class="row g-0 h-100 align-content-center mb-2">
+                        <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                            <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=8")' class="body-link text-truncate">Second</a>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                            <span>@Model.NoOfLoansSecond</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.AverageAppraisalSecond)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.GetAverageLoanAmountSecond())</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceSecond)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>@String.Format("{0:n2}", @Model.PctOfAUMSecond)%</span>
+                        </div>
+                    </div>
+                    <div class="row g-0 h-100 align-content-center mb-2">
+                        <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                            <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=9")' class="body-link text-truncate">Third</a>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                            <span>@Model.NoOfLoansThird</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.AverageAppraisalThird)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.GetAverageLoanAmountThird())</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceThird)</span>
+                        </div>
+                        <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>@String.Format("{0:n2}", @Model.PctOfAUMThird)%</span>
+                        </div>
+                    </div>
+                    @{
+                        decimal pctTotal = @Model.GetTotalPctOfAUMByPriority();
+                        <div class="row g-0 h-100 align-content-center mb-2">
+                            <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                                <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans")' class="body-link text-truncate">Entire Portfolio</a>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                                <span>@Model.GetTotalNoOfLoansByPriority()</span>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                                <span>$@String.Format("{0:n2}", @Model.AverageAppraisalTotal)</span>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                                <span>$@String.Format("{0:n2}", @Model.GetAverageLoanAmountTotal())</span>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                                <span>$@String.Format("{0:n2}", @Model.GetTotalPrincipalBalanceByPriority())</span>
+                            </div>
+                            <div class="col-2 col-md-2 d-flex align-items-center text-medium @((pctTotal != 100) ? "text-danger" :"text-info") justify-content-end">
+                                <span>@String.Format("{0:n2}", @pctTotal)%</span>
+                            </div>
+                        </div>
+
+                        if (pctTotal != 100)
+                        {
+                            <span class="text-danger text-small"><i data-acorn-icon="error-hexagon" class="icon mt-n1"></i>Error!!! Total percentage is not 100%. Please investigage!</span>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mortgage Summary by Priority End -->
+
+    <!-- Weighted Average Start -->
+    <h2 class="small-title">Weighted Average</h2>
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-between">
+                <div class="col-4 col-md-3 d-flex align-items-center">
+                    <label class="text-muted text-small text-uppercase">Weighted Average</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase">All Mortgages</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase">First Mortgages</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
+                    <label class="text-muted text-small text-uppercase text-end">Second Mortgages</label>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a asp-page="#" class="body-link text-truncate">LTV</a>
+                </div>
+                @{
+                    decimal WeightedLTVThreshold = (decimal)@ViewData["WEIGHTEDLTVTHRESHOLD"];
+                }
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.TotalWeightedLTV < @WeightedLTVThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.TotalWeightedLTV)%</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.FirstWeightedLTV < @WeightedLTVThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.FirstWeightedLTV)%</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end @((@Model.SecondlWeightedLTV < @WeightedLTVThreshold) ? "text-danger" : "text-info") text-medium">
+                    <span>@String.Format("{0:n2}", @Model.SecondlWeightedLTV)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a asp-page="#" class="body-link text-truncate">Maturity Months</a>
+                </div>
+                @{
+                    decimal WeightedMaturityDateInMonthsThreshold = (decimal)@ViewData["WEIGHTEDMATURITYDATEINMONTHSTHRESHOLD"];
+                }
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.TotalWeightedMaturityDateInMonths > @WeightedMaturityDateInMonthsThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.TotalWeightedMaturityDateInMonths)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.FirstWeightedMaturityDateInMonths > @WeightedMaturityDateInMonthsThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.FirstWeightedMaturityDateInMonths)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end @((@Model.SecondlWeightedMaturityDateInMonths > @WeightedMaturityDateInMonthsThreshold) ? "text-danger" : "text-info") text-medium">
+                    <span>@String.Format("{0:n2}", @Model.SecondlWeightedMaturityDateInMonths)</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a asp-page="#" class="body-link text-truncate">Beacon Score</a>
+                </div>
+                @{
+                    decimal WeightedBeaconScoreThreshold = (decimal)@ViewData["WEIGHTEDBEACONSCORETHRESHOLD"];
+                }
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.TotalWeightedBeaconScore < @WeightedBeaconScoreThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.TotalWeightedBeaconScore)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.FirstWeightedBeaconScore < @WeightedBeaconScoreThreshold) ? "text-danger" : "text-info") justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.FirstWeightedBeaconScore)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end @((@Model.SecondlWeightedBeaconScore < @WeightedBeaconScoreThreshold) ? "text-danger" : "text-info") text-medium">
+                    <span>@String.Format("{0:n2}", @Model.SecondlWeightedBeaconScore)</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a asp-page="#" class="body-link text-truncate">Interest Rate</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.TotalWeightedInterestRate)%</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.FirstWeightedInterestRate)%</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end text-info text-medium">
+                    <span>@String.Format("{0:n2}", @Model.SecondlWeightedInterestRate)%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Weighted Average End -->
+
+    <!-- Postal Code Start -->
+    <h2 class="small-title">Mortgage Summary by Postal Code</h2>
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-between">
+                <div class="col-2 col-md-2 d-flex align-items-center">
+                    <label class="text-muted text-small text-uppercase">Mortgage Region</label>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase">No of Mortgages</label>
+                </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase">Weighted LTV</label>
+                </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase text-center">Weighted Beacon Score</label>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-2">
+                    <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                    <label class="text-muted text-small text-uppercase">% of AUM</label>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=15")' class="body-link text-truncate">GTA</a>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansByPostalCodeInGTA</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedLTVByPostalCodeInGTA)%</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedBeaconScoreByPostalCodeInGTA)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceByPostalCodeInGTA)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end text-info text-medium">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMByPostalCodeInGTA)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=16")' class="body-link text-truncate">Ottawa</a>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansByPostalCodeInOttawa</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedLTVByPostalCodeInOttawa)%</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedBeaconScoreByPostalCodeInOttawa)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceByPostalCodeInOttawa)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end text-info text-medium">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMByPostalCodeInOttawa)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=17")' class="body-link text-truncate">Golden Horseshoe</a>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansByPostalCodeInGoldenHorseshoe</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedLTVByPostalCodeInGoldenHorseshoe)%</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedBeaconScoreByPostalCodeInGoldenHorseshoe)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceByPostalCodeInGoldenHorseshoe)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end text-info text-medium">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMByPostalCodeInGoldenHorseshoe)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=18")' class="body-link text-truncate">Other Major Urban Areas</a>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansByPostalCodeInOtherMajorUrbanAreas</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedLTVByPostalCodeInOtherMajorUrbanAreas)%</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@String.Format("{0:n2}", @Model.WeightedBeaconScoreByPostalCodeInOtherMajorUrbanAreas)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceByPostalCodeInOtherMajorUrbanAreas)</span>
+                </div>
+                <div class="col-2 col-md-2 d-flex align-items-center justify-content-end text-info text-medium">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMByPostalCodeInOtherMajorUrbanAreas)%</span>
+                </div>
+            </div>
+            @{
+                decimal pctTotalByMortgageRegion = @Model.GetTotalPctOfAUMByMortgageRegion();
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans")' class="body-link text-truncate">Entire Portfolio</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.GetTotalNoOfLoansByMortgageRegion()</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@String.Format("{0:n2}", @Model.TotalWeightedLTV)%</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@String.Format("{0:n2}", @Model.TotalWeightedBeaconScore)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.GetTotalPrincipalBalanceByMortgageRegion())</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium @((pctTotalByMortgageRegion != 100) ? "text-danger" :"text-info") justify-content-end">
+                        <span>@String.Format("{0:n2}", @pctTotalByMortgageRegion)%</span>
+                    </div>
+                </div>
+                @if (@Model.GetTotalNoOfLoansByMortgageRegion() != @Model.GetTotalNoOfLoansByPriority())
+                {
+                    <span class="text-danger text-small"><i data-acorn-icon="error-hexagon" class="icon mt-n1"></i>Error!!! Possible Property County mismatch with Mortgage Region County. Please investigage!</span>
+                }
+            }
+        </div>
+    </div>
+    <!-- Postal Code End -->
+
+    <!-- Price per Square Foot Start -->
+    @if (@Model.GetNoOfLoansTotalInGTA() > 0)
+    {
+        <h2 class="small-title">Price per Square Foot by Region</h2>
+        <div class="card mb-5">
+            <div class="card-body">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-2 col-md-2 d-flex align-items-center">
+                        <label class="text-muted text-small text-uppercase">Mortgage Region</label>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-0">
+                        <label class="text-muted text-small text-uppercase">Detached</label>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-0">
+                        <label class="text-muted text-small text-uppercase">Semi Detached</label>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-1">
+                        <label class="text-muted text-small text-uppercase text-center">Row Housing</label>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-end p-2">
+                        <label class="text-muted text-small text-uppercase text-end">Condo</label>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center justify-content-end">
+                        <label class="text-muted text-small text-uppercase">All Property Types</label>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href="" class="body-link text-truncate">GTA</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end pe-1">
+                        <span class="text-small p-1">(@Model.NoOfLoansDetachedInGTA)</span><span>@String.Format("${0:n2}", @Model.DetachedPricePerSquareFootInGTA)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansSemiDetachedInGTA)</span><span>@String.Format("${0:n2}", @Model.SemiDetachedPricePerSquareFootInGTA)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansRowHousingInGTA)</span><span>@String.Format("${0:n2}", @Model.RowHousingPricePerSquareFootInGTA)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansCondoInGTA)</span><span>@String.Format("${0:n2}", @Model.CondoPricePerSquareFootInGTA)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.GetNoOfLoansTotalInGTA())</span><span>@String.Format("${0:n2}", @Model.TotalPricePerSquareFootInGTA)</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href="" class="body-link text-truncate">Ottawa</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end pe-1">
+                        <span class="text-small p-1">(@Model.NoOfLoansDetachedInOttawa)</span><span>@String.Format("${0:n2}", @Model.DetachedPricePerSquareFootInOttawa)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansSemiDetachedInOttawa)</span><span>@String.Format("${0:n2}", @Model.SemiDetachedPricePerSquareFootInOttawa)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansRowHousingInOttawa)</span><span>@String.Format("${0:n2}", @Model.RowHousingPricePerSquareFootInOttawa)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansCondoInOttawa)</span><span>@String.Format("${0:n2}", @Model.CondoPricePerSquareFootInOttawa)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.GetNoOfLoansTotalInOttawa())</span><span>@String.Format("${0:n2}", @Model.TotalPricePerSquareFootInOttawa)</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href="" class="body-link text-truncate">Golden Horseshoe</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end pe-1">
+                        <span class="text-small p-1">(@Model.NoOfLoansDetachedInGoldenHorseshoe)</span><span>@String.Format("${0:n2}", @Model.DetachedPricePerSquareFootInGoldenHorseshoe)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansSemiDetachedInGoldenHorseshoe)</span><span>@String.Format("${0:n2}", @Model.SemiDetachedPricePerSquareFootInGoldenHorseshoe)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansRowHousingInGoldenHorseshoe)</span><span>@String.Format("${0:n2}", @Model.RowHousingPricePerSquareFootInGoldenHorseshoe)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansCondoInGoldenHorseshoe)</span><span>@String.Format("${0:n2}", @Model.CondoPricePerSquareFootInGoldenHorseshoe)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.GetNoOfLoansTotalInGoldenHorseshoe())</span><span>@String.Format("${0:n2}", @Model.TotalPricePerSquareFootInGoldenHorseshoe)</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href="" class="body-link text-truncate">Other Major Urban Areas</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end pe-1">
+                        <span class="text-small p-1">(@Model.NoOfLoansDetachedInOtherMajorUrbanAreas)</span><span>@String.Format("${0:n2}", @Model.DetachedPricePerSquareFootInOtherMajorUrbanAreas)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansSemiDetachedInOtherMajorUrbanAreas)</span><span>@String.Format("${0:n2}", @Model.SemiDetachedPricePerSquareFootInOtherMajorUrbanAreas)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansRowHousingInOtherMajorUrbanAreas)</span><span>@String.Format("${0:n2}", @Model.RowHousingPricePerSquareFootInOtherMajorUrbanAreas)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansCondoInOtherMajorUrbanAreas)</span><span>@String.Format("${0:n2}", @Model.CondoPricePerSquareFootInOtherMajorUrbanAreas)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.GetNoOfLoansTotalInOtherMajorUrbanAreas())</span><span>@String.Format("${0:n2}", @Model.TotalPricePerSquareFootInOtherMajorUrbanAreas)</span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-2 col-md-2 d-flex align-items-center mb-2 mb-md-0">
+                        <a href="" class="body-link text-truncate">All Regions</a>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end pe-1">
+                        <span class="text-small p-1">(@Model.NoOfLoansDetachedInAllRegions)</span><span>@String.Format("${0:n2}", @Model.DetachedPricePerSquareFootForAllRegions)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansSemiDetachedInAllRegions)</span><span>@String.Format("${0:n2}", @Model.SemiDetachedPricePerSquareFootForAllRegions)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansRowHousingInAllRegions)</span><span>@String.Format("${0:n2}", @Model.RowHousingPricePerSquareFootForAllRegions)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.NoOfLoansCondoInAllRegions)</span><span>@String.Format("${0:n2}", @Model.CondoPricePerSquareFootForAllRegions)</span>
+                    </div>
+                    <div class="col-2 col-md-2 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-small p-1">(@Model.GetNoOfLoansTotalInAllRegions())</span><span>@String.Format("${0:n2}", @Model.TotalPricePerSquareFootForAllRegions)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- Price per Square Foot End -->
+</div>
+
+<div class="col-12 col-xl-4">
+    <!-- Mortgage Summary by Mortgage Type Start -->
+    <h2 class="small-title">Mortgage Summary by Mortgage Type</h2>
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-between">
+                <div class="col-4 col-md-3 d-flex align-items-center">
+                    <label class="text-muted text-small text-uppercase">Mortgage Type</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase text-center">No of Mortgages</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end p-1">
+                    <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
+                    <label class="text-muted text-small text-uppercase text-end">% of AUM</label>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=10")' class="body-link text-truncate">Residential</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansResidential</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceResidential)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMResidential)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=11")' class="body-link text-truncate">Commercial</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansCommercial</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceCommercial)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMCommercial)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=12")' class="body-link text-truncate">Land</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansLand</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceLand)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMLand)%</span>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=13")' class="body-link text-truncate">Construction</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.NoOfLoansConstruction</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceConstruction)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>@String.Format("{0:n2}", @Model.PctOfAUMConstruction)%</span>
+                </div>
+            </div>
+            @if (@Model.NoOfLoansUncategorized > 0)
+            {
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=14")' class="body-link text-truncate text-warning">Uncategorized</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span class="text-warning">@Model.NoOfLoansUncategorized</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-warning">$@String.Format("{0:n2}", @Model.PrincipalBalanceUncategorized)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span class="text-warning">@String.Format("{0:n2}", @Model.PctOfAUMUncategorized)%</span>
+                    </div>
+                </div> 
+            }
+            <hr />
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans")' class="body-link text-truncate">Total</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.GetTotalNoOfLoansPropertyType()</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.GetTotalPrincipalBalancePropertyType())</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium @((@Model.GetTotalPctOfAUMPropertyType() == 100) ? "text-info" : "text-danger") justify-content-end">
+                    <span>@String.Format("{0:n2}", @Model.GetTotalPctOfAUMPropertyType())%</span>
+                </div>
+            </div>
+            @if (@Model.NoOfLoansUncategorized > 0)
+            {
+                <span class="text-warning text-small"><i data-acorn-icon="shield-warning" class="icon mt-n1"></i>Warning!!! Uncategorized loan(s). Please investigage!</span>
+            }
+            @if (@Model.GetTotalPctOfAUMPropertyType() != 100)
+            {
+                <span class="text-danger text-small"><i data-acorn-icon="error-hexagon" class="icon mt-n1"></i>Error!!! Total percentage is not 100%. Please investigage!</span>
+            }
+        </div>
+    </div>
+    <!-- Mortgage Summary by Property Type End -->
+
+    <!-- Remaining Term to Maturity Summary Start -->
+    @if (Model.GetTotalNoOfLoansRemainingTermtoMaturity() > 0)
+    {
+        <h2 class="small-title">Remaining Term to Maturity Summary</h2>
+        <div class="card mb-5">
+            <div class="card-body">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-4 col-md-3 d-flex align-items-center">
+                        <label class="text-muted text-small text-uppercase">Maturity in Months</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                        <label class="text-muted text-small text-uppercase text-center">No of Mortgages</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-end p-1">
+                        <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
+                        <label class="text-muted text-small text-uppercase text-end">% of AUM</label>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a  href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=59")' class="body-link text-truncate">&#8804; 6</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansRemainingTermtoMaturityLessEqual6</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceRemainingTermtoMaturityLessEqual6)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMRemainingTermtoMaturityLessEqual6)%</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=60")' class="body-link text-truncate">> 6 - 9</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansRemainingTermtoMaturity6To9</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceRemainingTermtoMaturity6To9)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMRemainingTermtoMaturity6To9)%</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=61")' class="body-link text-truncate">> 9 - 12</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansRemainingTermtoMaturity9To12</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceRemainingTermtoMaturity9To12)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMRemainingTermtoMaturity9To12)%</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=62")' class="body-link text-truncate">> 12</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansRemainingTermtoMaturityMoreThan12</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalanceRemainingTermtoMaturityMoreThan12)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMRemainingTermtoMaturityMoreThan12)%</span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans")' class="body-link text-truncate">Total</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.GetTotalNoOfLoansRemainingTermtoMaturity()</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.GetTotalPrincipalBalanceRemainingTermtoMaturity())</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium @((double)Math.Abs(Model.GetTotalPctOfAUMRemainingTermtoMaturity() - 100) < 0.0001 ? "text-info" : "text-danger") justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.GetTotalPctOfAUMRemainingTermtoMaturity())%</span>
+                    </div>
+                </div>
+                @if ((double)Math.Abs(Model.GetTotalPctOfAUMRemainingTermtoMaturity() - 100) > 0.0001)
+                {
+                    <span class="text-danger text-small"><i data-acorn-icon="error-hexagon" class="icon mt-n1"></i>Error!!! Total percentage is not 100%. Please investigage!</span>
+                }
+            </div>
+    </div>
+    }
+    <!-- Remaining Term to Maturity Summary End -->
+
+    <!-- Portfolio Summary by LTV Start -->
+    @if (Model.GetTotalNoOfLoansPortfolioByLTV() > 0)
+    {
+        <h2 class="small-title">Portfolio Summary by LTV</h2>
+        <div class="card mb-5">
+            <div class="card-body">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-4 col-md-3 d-flex align-items-center">
+                        <label class="text-muted text-small text-uppercase">LTV Range</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                        <label class="text-muted text-small text-uppercase text-center">No of Mortgages</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-end p-1">
+                        <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
+                        <label class="text-muted text-small text-uppercase text-end">% of AUM</label>
+                    </div>
+                </div>
+                @if (@Model.NoOfLoansPortfolioByLTVMoreThan80 > 0)
+                {
+                    <div class="row g-0 h-100 align-content-center mb-2">
+                        <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                            <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=63")' class="body-link text-truncate">> 80%</a>
+                        </div>
+                        <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                            <span>@Model.NoOfLoansPortfolioByLTVMoreThan80</span>
+                        </div>
+                        <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>$@String.Format("{0:n2}", @Model.PrincipalBalancePortfolioByLTVMoreThan80)</span>
+                        </div>
+                        <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                            <span>@String.Format("{0:n2}", @Model.PctOfAUMPortfolioByLTVMoreThan80)%</span>
+                        </div>
+                    </div>
+                }
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=64")' class="body-link text-truncate">> 75% - 80%</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansPortfolioByLTV75To80</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalancePortfolioByLTV75To80)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMPortfolioByLTV75To80)%</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=65")' class="body-link text-truncate">> 65% - 75%</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansPortfolioByLTV65To75</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalancePortfolioByLTV65To75)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMPortfolioByLTV65To75)%</span>
+                    </div>
+                </div>
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=66")' class="body-link text-truncate">&#8804; 65%</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.NoOfLoansPortfolioByLTVLessEqual65</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.PrincipalBalancePortfolioByLTVLessEqual65)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.PctOfAUMPortfolioByLTVLessEqual65)%</span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans")' class="body-link text-truncate">Total</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.GetTotalNoOfLoansPortfolioByLTV()</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.GetTotalPrincipalBalancePortfolioByLTV())</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium @((double)Math.Abs(Model.GetTotalPctOfAUMPortfolioByLTV() - 100) < 0.0001 ? "text-info" : "text-danger") justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.GetTotalPctOfAUMPortfolioByLTV())%</span>
+                    </div>
+                </div>
+                @if ((double)Math.Abs(Model.GetTotalPctOfAUMPortfolioByLTV() - 100) > 0.0001)
+                {
+                    <span class="text-danger text-small"><i data-acorn-icon="error-hexagon" class="icon mt-n1"></i>Error!!! Total percentage is not 100%. Please investigage!</span>
+                }
+            </div>
+    </div>
+    }
+    <!-- Portfolio Summary by LTV End -->
+
+    <!-- Mortgage Summary by Late Payment Start -->
+    <h2 class="small-title">Mortgage Summary by Late Payment</h2>
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="row d-flex justify-content-between">
+                <div class="col-4 col-md-3 d-flex align-items-center">
+                    <label class="text-muted text-small text-uppercase">Days Late</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-center">
+                    <label class="text-muted text-small text-uppercase">No of Mortgages</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end p-1">
+                    <label class="text-muted text-small text-uppercase text-end">Principal Balance</label>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center justify-content-end">
+                    <label class="text-muted text-small text-uppercase text-end">% of AUM</label>
+                </div>
+            </div>
+            <div class="row g-0 h-100 align-content-center mb-2">
+                <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                    <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=3")' class="body-link text-truncate"> > 0 Days</a>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                    <span>@Model.TotoalNoOfLoans0To30DaysLate</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                    <span>$@String.Format("{0:n2}", @Model.TotalPrincipalBalance0To30DaysLate)</span>
+                </div>
+                <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.TotalPctOfAUM0To30DaysLate)%</span>
+                    </div>
+            </div>
+            @if (@Model.TotoalNoOfLoans31To90DaysLate > 0)
+            {
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=4")' class="body-link text-truncate">31 to 90 Days</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.TotoalNoOfLoans31To90DaysLate</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.TotalPrincipalBalance31To90DaysLate)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.TotalPctOfAUM31To90DaysLate)%</span>
+                    </div>
+                </div>
+            }
+            @if (@Model.TotoalNoOfLoans91To270DaysLate > 0)
+            {
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=5")' class="body-link text-truncate">91 to 270 Days</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.TotoalNoOfLoans91To270DaysLate</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.TotalPrincipalBalance91To270DaysLate)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.TotalPctOfAUM91To270DaysLate)%</span>
+                    </div>
+                </div>
+            }
+            @if (@Model.TotoalNoOfLoansMoreThan270DaysLate > 0)
+            {
+                <div class="row g-0 h-100 align-content-center mb-2">
+                    <div class="col-4 col-md-3 d-flex align-items-center mb-2 mb-md-0">
+                        <a href='@(ViewData.ContainsKey("PORTFOLIOHISTORYVIEW") ? "" : $"/loans?filtertype=6")' class="body-link text-truncate"> 270 Days</a>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-center">
+                        <span>@Model.TotoalNoOfLoansMoreThan270DaysLate</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>$@String.Format("{0:n2}", @Model.TotalPrincipalBalanceMoreThan270DaysLate)</span>
+                    </div>
+                    <div class="col-4 col-md-3 d-flex align-items-center text-medium text-info justify-content-end">
+                        <span>@String.Format("{0:n2}", @Model.TotalPctOfAUMMoreThan270DaysLate)%</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Mortgage Summary by Late Payment End -->
+</div>
+<!-- Dashboard - Loan Stats Partial View End -->
